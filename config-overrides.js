@@ -7,6 +7,9 @@ const path = require('path')
         style: 'css',
       }),
       addWebpackAlias({
-        assets: path.resolve(__dirname, './src/assets')
+        assets: path.resolve(__dirname, './src/assets'),
+        pages: path.resolve(__dirname, './src/pages'),
+        components: path.resolve(__dirname, './src/components'),
+        utils: path.resolve(__dirname, './src/utils')
       }),    
   );

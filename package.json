@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd-mobile": "^2.3.1",
+    "axios": "^0.19.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
@@ -16,7 +17,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mock":"json-server ./src/mock/mock.js -r ./src/mock/route.json -p 9000 --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +38,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
     "customize-cra": "^0.9.1",
+    "http-proxy-middleware": "^0.20.0",
     "react-app-rewired": "^2.1.5"
   }
 }

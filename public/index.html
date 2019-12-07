@@ -40,4 +40,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    (function() {
+      var docEl = document.documentElement;
+      var html = document.querySelector('html')
+      var rem = docEl.clientWidth / 10;
+      html.style.fontSize = rem + 'px';
+    })();
+  </script>
 </html>

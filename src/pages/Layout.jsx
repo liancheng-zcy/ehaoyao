@@ -1,26 +1,28 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
 import { TabBar } from 'antd-mobile';
 import Ehome from './home/ehome/Ehome'
-// import eHome from 'assets/images/home.png'
-// import eHomeActive from 'assets/images/homeActive.png'
-
-
+import { TabBarWrap } from './home/ehome/styledEhome'
+import homeImg from 'assets/images/home.png'
+import homeActive from 'assets/images/homeActive.png'
+import categoryImg from 'assets/images/category.png'
+import categoryActive from 'assets/images/categoryActive.png'
+import cartImg from 'assets/images/cart.png'
+import cartActive from 'assets/images/cartActive.png'
+import docImg from 'assets/images/doc.png'
+import myImg from 'assets/images/my.png'
+// import { relative } from 'path';
 class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'home',
       hidden: false,
       fullScreen: true,
     };
   }
-
-
-
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+      <TabBarWrap style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
         <TabBar
           unselectedTintColor="#464646"
           tintColor="#ff344d"
@@ -28,25 +30,23 @@ class Layout extends React.Component {
           hidden={this.state.hidden}
         >
           <TabBar.Item
-            title="首页"
             key="home"
             icon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+              width: '44px',
+              height: '44px',
+              background: `url(${homeImg}) center center /  42px 42px no-repeat` }}
             />
             }
             selectedIcon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+              width: '44px',
+              height: '44px',
+              background: `url(${homeActive}) center center /  42px 42px no-repeat` }}
             />
             }
-            selected={this.state.selectedTab === 'blueTab'}
-           
+            selected={this.state.selectedTab === 'home'}
             onPress={() => {
               this.setState({
-                selectedTab: 'blueTab',
+                selectedTab: 'home',
               });
             }}
            
@@ -56,25 +56,26 @@ class Layout extends React.Component {
           <TabBar.Item
             icon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                width: '44px',
+                height: '44px',
+                background: `url(${categoryImg}) center center /  42px 44px no-repeat` 
+
+              }}
               />
             }
             selectedIcon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                width: '44px',
+                height: '44px',
+                background: `url(${categoryActive}) center center /  42px 42px no-repeat` }}
               />
             }
-            title="Koubei"
-            key="Koubei"
+            key="category"
            
-            selected={this.state.selectedTab === 'redTab'}
+            selected={this.state.selectedTab === 'category'}
             onPress={() => {
               this.setState({
-                selectedTab: 'redTab',
+                selectedTab: 'category',
               });
             }}
            
@@ -82,56 +83,64 @@ class Layout extends React.Component {
           <div>2</div>
           </TabBar.Item>
           <TabBar.Item
+            style={{
+              position:'relative',
+            }}
             icon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+                width: '44px',
+                height: '55px',
+                background: `url(${docImg}) center center /  42px 55px no-repeat`,
+                position:"absolute",
+                top:'-33px',
+                zIndex:10
+               }}
               />
             }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="Friend"
-            key="Friend"
-           
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'greenTab',
-              });
-            }}
+            key="doc"
           >
             <div>3</div>
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My"
-            key="my"
-            selected={this.state.selectedTab === 'yellowTab'}
+             icon={
+              <div style={{
+                width: '44px',
+                height: '44px',
+                background: `url(${cartImg}) center center /  42px 42px no-repeat` }}
+              />
+            }
+            selectedIcon={
+              <div style={{
+                width: '44px',
+                height: '44px',
+                background: `url(${cartActive}) center center /  42px 42px no-repeat` }}
+              />
+            }
+            key="cart"
+            selected={this.state.selectedTab === 'cart'}
             onPress={() => {
               this.setState({
-                selectedTab: 'yellowTab',
+                selectedTab: 'cart',
               });
             }}
           >
             <div>4</div>
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My1"
-            key="my1"
+            icon={
+              <div style={{
+                width: '44px',
+                height: '44px',
+                background: `url(${myImg}) center center /  42px 42px no-repeat` }}
+              />
+            }
+            key="my"
           >
             <div>5</div>
           </TabBar.Item>
         </TabBar>
-      </div>
+      </TabBarWrap>
+
     );
   }
 }
