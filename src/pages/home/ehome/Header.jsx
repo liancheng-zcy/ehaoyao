@@ -9,7 +9,7 @@ export default class Header extends Component {
             <img src={logo} alt="logo" className="logo"/>
             <div className="search-box"><span className="input-text">泰尔丝 补肺丸 鸿茅药酒</span>
             </div>
-            <a className="btn_login">登录</a>
+            <a href="true" className="btn_login">登录</a>
         </header>
       </HeaderWrap>
         )

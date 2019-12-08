@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+export const TabBarWrap = styled.div `
+  .am-tabs-pane-wrap {
+      width: 100%;
+      flex-shrink: 0;
+      overflow-y: hidden;
+  }
+  .am-tab-bar-tab-icon {
+    position: relative;
+  }
+`
+
 export const HeaderWrap = styled.div `
   height: 1.266667rem;
   background:#fa334b;
@@ -48,11 +59,7 @@ export const HeaderWrap = styled.div `
   }
   }
 `
-export const TabBarWrap = styled.div `
-  .am-tab-bar-tab-icon {
-    position: relative;
-  }
-`
+
 export const SwiperWrap = styled.div `
   position: relative;
   width: 100%;
@@ -122,7 +129,7 @@ export const RecommendWrap = styled.div `
     }
 `
 // 限时秒杀
-export const SeckillWrap = styled.div`
+export const SeckillWrap = styled.div `
     margin-bottom: .2rem;
     height: 4.533333rem;
     background-color: #fff;
@@ -187,7 +194,7 @@ export const SeckillWrap = styled.div`
 }
 `
 
-export const InstrumentWrap = styled.div`
+export const InstrumentWrap = styled.div `
     .instrument-box {
       margin-bottom: .2rem;
       width: 100%;
@@ -252,7 +259,7 @@ export const InstrumentWrap = styled.div`
     }
   }
 `
-export const BrandsWrap = styled.div`
+export const BrandsWrap = styled.div `
   .brands-box {
     margin-bottom: .2rem;
     width: 100%;
@@ -286,7 +293,7 @@ export const BrandsWrap = styled.div`
   }
 }
 `
-export const PromotionWrap = styled.div`
+export const PromotionWrap = styled.div `
   .promotion-box {
     margin-bottom: .2rem;
     width: 100%;
@@ -335,7 +342,7 @@ export const PromotionWrap = styled.div`
 }
 `
 // goods
-export const GoodsWrap = styled.div`
+export const GoodsWrap = styled.div `
   .goods-box {
     margin-bottom: .2rem;
     width: 100%;
@@ -349,4 +356,41 @@ export const GoodsWrap = styled.div`
   }
 }
 
+`
+export const BottomWrap = styled.div `
+ .bottom-box {
+    margin: 0 auto;
+    width: 9.333333rem;
+  .img-aboutus {
+      display: block;
+      width: 100%;
+  }
+  .btn-list {
+      display: flex;
+      height: .96rem;
+      line-height: .96rem;
+      justify-content: center;
+      font-size: .296267rem;
+      color: #898989;
+      overflow: hidden;
+      span {
+        padding: 0 .266667rem;
+    }
+  }
+   .img-consult-telephone {
+      display: block;
+      width: 100%;
+  }
+   img {
+      width: 100%;
+      height: 100%;
+  }
+  .copyright {
+      margin-bottom: .266667rem;
+      line-height: .933333rem;
+      text-align: center;
+      font-size: .277733rem;
+      color: #898989;
+  }
+}
 `

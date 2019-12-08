@@ -1,3 +1,23 @@
 http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442388&memberId&pharmacyId=25&coonType=5&cityId=027
 
 1、customize-cra 配置webpack的一些操作（进入官网）
+  - 创建config-overrides.js
+  实例：
+  ```
+    module.exports = override(
+      fixBabelImports('import', {//导入antd-mobile
+        libraryName: 'antd-mobile',
+        style: 'css',
+      }),
+      addWebpackAlias({ //配置别名
+        assets: path.resolve(__dirname, './src/assets'),
+        pages: path.resolve(__dirname, './src/pages'),
+        components: path.resolve(__dirname, './src/components'),
+        utils: path.resolve(__dirname, './src/utils')
+      }),    
+  )
+
+  ```
+
+2、styled components 基本使用方法？
+参考：https://blog.csdn.net/weixin_34111790/article/details/88687164

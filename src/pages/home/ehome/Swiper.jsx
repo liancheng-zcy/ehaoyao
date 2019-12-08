@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { SwiperWrap } from './styledEhome'
 import { Carousel } from 'antd-mobile';
+import { get } from 'utils/http'
 export default class Swiper extends Component {
   state = {
     data: ['1', '2', '3'],
     imgHeight: 150,
   }
-  componentDidMount() {
-    // simulate img loading
+  async componentDidMount() {
+    let result = await get({
+      url:"/ajax/goods",
+    })
     setTimeout(() => {
       this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+        data: result.data[0].gallery,
       });
     }, 1000);
   }
@@ -20,22 +23,27 @@ export default class Swiper extends Component {
           <Carousel
             autoplay={true}
             infinite
+            dotActiveStyle={{
+              background:'#ff344d'
+            }}
+            dotStyle={{
+              background:'#f2e2e3'
+            }}
             // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
             // afterChange={index => console.log('slide to', index)}
             slideWidth={1}
           >
             {this.state.data.map(val => (
               <a
-                key={val}
-                href="http://www.alipay.com"
+                key={val.name + val.id}
+                href={val.linkUrl}
                 style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
               >
                 <img
-                  src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                  src={val.imageUrl}
                   alt=""
                   style={{ width: '100%', verticalAlign: 'top',height:'150px' }}
                   onLoad={() => {
-                    // fire window resize event to change height
                     window.dispatchEvent(new Event('resize'));
                     this.setState({ imgHeight: 'auto' });
                   }}

@@ -10,24 +10,43 @@ import Instrument from './Instrument'
 import Brands from './Brands'
 import Promotion from './Promotion'
 import Goods from './Goods'
+import Bottom from './Bottom'
+import BScroll from 'better-scroll'
+import { hidden } from 'ansi-colors'
 export default class Ehome extends Component {
+  componentDidMount(){
+    let bScroll = new BScroll('.eHome', {
+      pullUpLoad: true,
+      probeType: 2,
+      preventDefault:false
+    });
+  }
   render() {
     return (
-      <div>
+      <>
         <div className="tipBox">
           <Ad></Ad>
           <Header></Header>
         </div>
-        <Swiper></Swiper>
-        <PromiseBox></PromiseBox>
-        <FuncitonList></FuncitonList>
-        <Recommend></Recommend>
-        <Seckill></Seckill>
-        <Instrument></Instrument>
-        <Brands></Brands>
-        <Promotion></Promotion>
-        <Goods></Goods>
-      </div>
+        <div className ="eHome" style={{
+          overflow:'hidden',
+          width:'100%',
+          height:'100%'
+        }}>
+          <div className ="eHomeContent">
+            <Swiper></Swiper>
+            <PromiseBox></PromiseBox>
+            <FuncitonList></FuncitonList>
+            <Recommend></Recommend>
+            <Seckill></Seckill>
+            <Instrument></Instrument>
+            <Brands></Brands>
+            <Promotion></Promotion>
+            <Goods></Goods>
+            <Bottom></Bottom>
+          </div>
+        </div>
+      </>
     )
   }
 }

@@ -8,7 +8,7 @@ export default class Ad extends Component {
         <div className="content">下载好药师APP
           <span className="money">注册即领150元</span>
         </div>
-        <a target="_self" className="btn-download">立即下载</a>
+        <a href="true" target="_self" className="btn-download">立即下载</a>
       </AdWrap>
     )
   }
