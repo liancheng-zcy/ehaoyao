@@ -1,7 +1,7 @@
 import React from 'react'
 import { TabBar } from 'antd-mobile';
-import Ehome from './home/ehome/Ehome'
-import { TabBarWrap } from './home/ehome/styledEhome'
+import Ehome from './ehome/Ehome'
+import { TabBarWrap } from './ehome/styledEhome'
 import homeImg from 'assets/images/home.png'
 import homeActive from 'assets/images/homeActive.png'
 import categoryImg from 'assets/images/category.png'
@@ -10,7 +10,7 @@ import cartImg from 'assets/images/cart.png'
 import cartActive from 'assets/images/cartActive.png'
 import docImg from 'assets/images/doc.png'
 import myImg from 'assets/images/my.png'
-// import { relative } from 'path';
+
 class Layout extends React.Component {
   constructor(props) {
     super(props);

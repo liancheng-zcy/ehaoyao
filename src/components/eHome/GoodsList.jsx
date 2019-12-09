@@ -16,6 +16,7 @@ export default class GoodsList extends Component {
     this.setState({
       goodList:result.data[0].goods
     })
+   
   }
 
 

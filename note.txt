@@ -21,3 +21,7 @@ http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442
 
 2、styled components 基本使用方法？
 参考：https://blog.csdn.net/weixin_34111790/article/details/88687164
+
+
+3、详情页接口
+  http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442388&memberId&pharmacyId=25&coonType=5&cityId=027

@@ -4,18 +4,16 @@ import { Carousel } from 'antd-mobile';
 import { get } from 'utils/http'
 export default class Swiper extends Component {
   state = {
-    data: ['1', '2', '3'],
+    data: ['1','2','3'],
     imgHeight: 150,
   }
   async componentDidMount() {
     let result = await get({
       url:"/ajax/goods",
     })
-    setTimeout(() => {
-      this.setState({
-        data: result.data[0].gallery,
-      });
-    }, 1000);
+    this.setState({
+      data: result.data[0].gallery,
+    });
   }
   render() {
     return (
@@ -29,8 +27,6 @@ export default class Swiper extends Component {
             dotStyle={{
               background:'#f2e2e3'
             }}
-            // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-            // afterChange={index => console.log('slide to', index)}
             slideWidth={1}
           >
             {this.state.data.map(val => (

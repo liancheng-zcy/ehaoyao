@@ -12,10 +12,9 @@ import Promotion from './Promotion'
 import Goods from './Goods'
 import Bottom from './Bottom'
 import BScroll from 'better-scroll'
-import { hidden } from 'ansi-colors'
 export default class Ehome extends Component {
   componentDidMount(){
-    let bScroll = new BScroll('.eHome', {
+    new BScroll('.eHome', {
       pullUpLoad: true,
       probeType: 2,
       preventDefault:false

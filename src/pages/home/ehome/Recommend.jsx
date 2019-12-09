@@ -21,7 +21,7 @@ export default class Recommend extends Component {
       </Carousel>
       </ul>
       <span className="icon-more"></span>
-      <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+      <span className="swiper-notification"></span>
     </RecommendWrap>
     )
   }

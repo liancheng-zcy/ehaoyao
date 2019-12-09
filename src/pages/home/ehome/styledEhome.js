@@ -391,6 +391,7 @@ export const BottomWrap = styled.div `
       text-align: center;
       font-size: .277733rem;
       color: #898989;
+      padding-bottom:90px
   }
 }
 `
