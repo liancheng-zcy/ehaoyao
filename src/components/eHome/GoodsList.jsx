@@ -13,13 +13,23 @@ export default class GoodsList extends Component {
     let result = await get({
       url:"/ajax/goods",
     })
+    let data = result.data[0].goods.map((val,index)=>{
+      return {
+          id:val.id,
+          imageUrl:val.imageUrl,
+          linkId:val.linkUrl.match(/\d+/g)[0],
+          name:val.name,
+          price:val.price,
+          type:val.type,
+          displayOrder:val.displayOrder,
+          mode:val.mode
+        }
+    })
     this.setState({
-      goodList:result.data[0].goods
+      goodList:data
     })
    
   }
-
-
   render() {
     return (
       <>

@@ -11,8 +11,9 @@ export default class GoodsItem extends Component {
               <GoodsItemWrap 
                 className="list-item"
                 key={item.id}
+                data-proid={item.linkId}
                 >
-                <a href={item.linkUrl} className="img">
+                <a href="true" className="img">
                   <img src={`${item.imageUrl}`} alt="" />
                 </a>
             <p className="p-name"><span>{item.name}</span></p>

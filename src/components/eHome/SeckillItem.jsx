@@ -10,7 +10,7 @@ export default class SeckillItem extends Component {
           return (
           <SeckillItemWrap 
             className="item swiper-slide"
-            data-goodsid={item.goodsId}
+            data-skillproid={item.goodsId}
             key={item.goodsId}
           >
             <img

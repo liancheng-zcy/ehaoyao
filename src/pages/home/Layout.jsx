@@ -1,5 +1,6 @@
 import React from 'react'
 import { TabBar } from 'antd-mobile';
+// home
 import Ehome from './ehome/Ehome'
 import { TabBarWrap } from './ehome/styledEhome'
 import homeImg from 'assets/images/home.png'
@@ -10,12 +11,14 @@ import cartImg from 'assets/images/cart.png'
 import cartActive from 'assets/images/cartActive.png'
 import docImg from 'assets/images/doc.png'
 import myImg from 'assets/images/my.png'
+// category
+import Category from './category/Category'
 
 class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'home',
+      selectedTab: 'category',
       hidden: false,
       fullScreen: true,
     };
@@ -80,7 +83,7 @@ class Layout extends React.Component {
             }}
            
           >
-          <div>2</div>
+          <Category></Category>
           </TabBar.Item>
           <TabBar.Item
             style={{

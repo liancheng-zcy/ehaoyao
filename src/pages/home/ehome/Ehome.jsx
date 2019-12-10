@@ -12,6 +12,7 @@ import Promotion from './Promotion'
 import Goods from './Goods'
 import Bottom from './Bottom'
 import BScroll from 'better-scroll'
+// import CountDown from './CountDown'
 export default class Ehome extends Component {
   componentDidMount(){
     new BScroll('.eHome', {
@@ -43,6 +44,7 @@ export default class Ehome extends Component {
             <Promotion></Promotion>
             <Goods></Goods>
             <Bottom></Bottom>
+
           </div>
         </div>
       </>

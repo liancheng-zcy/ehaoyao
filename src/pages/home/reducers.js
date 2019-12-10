@@ -1,6 +1,7 @@
 import * as types from './action_types'
 const defaultState = {
-  homeData:[]
+  homeData:[],
+  categoryData:[]
 }
 
 export default (state=defaultState,action) =>{
@@ -8,6 +9,10 @@ export default (state=defaultState,action) =>{
     case types.LOADDATA:
       return{
         homeData:action.data
+      }
+    case types.LOADCATGORY: 
+      return{
+        categoryData:action.data
       }
     case types.FETCH_FAILED: 
       return{

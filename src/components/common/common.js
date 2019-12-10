@@ -1,0 +1,66 @@
+import styled from 'styled-components'
+
+export const SearchWrap = styled.header`
+    display: flex;
+    width: 10rem;
+    height: 1.173333rem;
+    background-color: #ff344d;
+    align-items: center;
+    font-family: \\5FAE\8F6F\96C5\9ED1;
+    .goback {
+      margin-left: .133333rem;
+      width: 1.066667rem;
+      height: 100%;
+      background: url("http://m.ehaoyao.com/_nuxt/img/icon_header_goback.052eff7.png") no-repeat 50%;
+      background-size: .533333rem .533333rem;
+      cursor: pointer;
+  }
+   .main {
+      display: flex;
+      margin: 0 auto;
+      flex: 1;
+      width: 5.6rem;
+      height: 1.173333rem;
+      line-height: 1.173333rem;
+      align-items: center;
+      .search-wrapper {
+        display: flex;
+        padding-left: .866667rem;
+        width: 90%;
+        height: .773333rem;
+        border-radius: .066667rem;
+        text-align: center;
+        background: #fff url("http://m.ehaoyao.com/_nuxt/img/icon-search.35ffc25.png") no-repeat .173333rem;
+        background-size: .533333rem .4rem;
+        .search-alink {
+          display: inline-block;
+          width: 90%;
+          height: .773333rem;
+          text-decoration: none;
+          .searchTip {
+            display: block;
+            flex: 1;
+            height: .773333rem;
+            line-height: .773333rem;
+            color: #898989;
+            border: 0;
+            font-size: .373333rem;
+            background-color: #fff;
+            text-align: left;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+      }
+    }
+  }
+  .right {
+      position: relative;
+      width: 10%;
+      height: 100%;
+      line-height: 1.173333rem;
+      text-align: center;
+      font-size: .373333rem;
+      color: #fff;
+  }
+`
