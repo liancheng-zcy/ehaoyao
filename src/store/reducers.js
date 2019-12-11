@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import {reducers as homeList} from 'pages/home/index.js'
-export default combineReducers({
-  home:homeList
+import {
+  reducers as homeList,
+  reducersCate as categoryList
+} from 'pages/home/index.js'
+export  default combineReducers({
+  home:homeList,
+  category:categoryList
 })

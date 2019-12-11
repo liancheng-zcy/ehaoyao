@@ -1,52 +1,112 @@
 import React, { Component } from 'react'
 import { SubjectWrap } from './styledCategory'
-export default class Subject extends Component {
+import { connect } from 'react-redux'
+import imgBg from 'assets/images/img-bg.png'
+const mapStateToProps = (state) => ({
+  selectList: state.category.categoryData
+})
+@connect(mapStateToProps)
+class Subject extends Component {
+  constructor(){
+    super()
+    this.state = {
+      isShow:false,
+    }
+  }
   componentDidMount(){
-    
+    this.refs.mySubject.addEventListener('scroll',this.handleScroll,false)
+  }
+  handleScroll = () =>{
+    this.setState({
+      subTop:this.refs.mySubject.scrollTop
+    },() =>{
+      if(this.state.subTop > 100){
+        this.setState({
+          isShow:true
+        })
+      }else{
+        this.setState({
+          isShow:false
+        })
+      }
+    })
+  }
+  handleScrollTop = () =>{
+    this.refs.mySubject.scrollTop = 0
   }
   render() {
+    let labelList = this.props.selectList.list ? this.props.selectList.list : []
     return (
       <>
         <SubjectWrap>
-          <div className="label-list clearfix">
-            <a href="#66" className="item">补益用药</a>
-            <a href="#67" className="item">儿科</a>
-            <a href="#68" className="item">风湿骨科</a>
-            <a href="#69" className="item">妇科</a>
-            <a href="#70" className="item">肝胆科</a>
-            <a href="#71" className="item">呼吸科</a>
-            <a href="#72" className="item">抗菌消炎</a>
-            <a href="#73" className="item">泌尿科</a>
-            <a href="#74" className="item">男科</a>
-            <a href="#75" className="item">内分泌科</a>
-            <a href="#76" className="item">皮肤科</a>
-            <a href="#78" className="item">神经精神科</a>
-            <a href="#79" className="item">五官科</a>
-            <a href="#80" className="item">消化科</a>
-            <a href="#81" className="item">心脑血管科</a>
-            <a href="#82" className="item">肿瘤科</a>
-          </div>
-          <dl id="66" className="subject-item">
-            <dt className="item-title">补益用药</dt>
-            <dd className="item-list">
-              <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""
-                className="img" />
-              <span>补气养血</span>
-            </dd>
-            <dd className="item-list"><img
-              src="http://image.qumaiyao.com/mogfile/onimage/2017082210333040C00B4A9ACAC8110BABADAAD68728FA.jpg" alt=""
-              className="img" />
-              <span>免疫调节</span>
-            </dd>
-            <dd className="item-list"><img
-              src="http://image.qumaiyao.com/mogfile/onimage/2017081415514128596FDB24434E07C1A12298AE2C8CE1.jpg" alt=""
-              className="img" />
-              <span>维矿物质</span>
-            </dd>
-          </dl>
+         <div className="subject" ref="mySubject">
+         {
+            labelList.length && (
+              <div className="label-list clearfix">
+                {
+                  labelList.map((val, index) => {
+                    return (
+                      <a
+                        href={`#${val.cid}`}
+                        className="item"
+                        key={val.cid}
+                      >{val.name}</a>
+                    )
+                  })
+                }
+              </div>
+            )
+          }
+          {
+            labelList.length && (
+              <>
+                  {
+                  labelList.map((val,index) => {
+                    return (
+                      <dl 
+                        id={val.cid} 
+                        className="subject-item"
+                        key={val.cid + val.name}
+                      >
+                      <dt className="item-title">{val.name}</dt>
+                      {
+                         val.list.map((value,index) =>{
+                          return(
+                            
+                            <dd 
+                              className="item-list"
+                              key={value.cid + value.name}
+                            >
+                            <img 
+                              // data-src={imgBg}
+                              src={`${ value.imageUrl ? 'http://image.qumaiyao.com/' + value.imageUrl : imgBg}`} 
+                              alt=""
+                              className="img"
+                            />
+                            <span>{value.name}</span>
+                            </dd>
+                          )
+                         })
+                       }
+                      </dl>
+                    )
+                  })
+                }
+              </>
+            )
+          }
+          {
+            this.state.isShow && <div 
+            ref="myTop" 
+            className="btn-return-top"
+            onClick={this.handleScrollTop}
+           ></div>
+          }
+         </div>
         </SubjectWrap>
       </>
-
     )
   }
 }
+
+export default Subject

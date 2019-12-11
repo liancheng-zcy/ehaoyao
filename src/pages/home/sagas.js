@@ -14,17 +14,32 @@ function* loadData(action) {
       yield put({type: types.FETCH_FAILED, message: e.message});
    }
 }
-function* loadCategoryData(action) {
-   console.log(action.selId)
-   // try {
-   //    const result = yield get({
-   //      url:action.url
-   //    });
-   //    yield put({type:types.LOADDATA, data: result.data});
-   // } catch (e) {
-   //    yield put({type: types.FETCH_FAILED, message: e.message});
-   // }
-}
+
+function * loadCategoryData(action) {
+     
+      try {
+         // const result = yield get({
+         //   url:action.url
+         // });
+         // let resData = result.data.data
+         // let data_category = null
+         // resData.forEach((val,index) => {
+         //    if(action.selId === val.cid){
+         //       data_category = result.data.data[index]
+         //    }
+         // })
+         let resData = action.cateList
+         let data_category = null
+         resData.forEach((val,index) => {
+            if(action.selId === val.cid){
+               data_category = resData[index]
+            }
+         })
+         yield put({type:types.LOADCATGORY, data:data_category});
+      } catch (e) {
+         yield put({type: types.FETCH_FAILED, message: e.message});
+      }
+   }
 
 export {
   types,

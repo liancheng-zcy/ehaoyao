@@ -3,6 +3,7 @@ import Primary from './Primary'
 import { CategoryWarper } from './styledCategory'
 import Subject from './Subject'
 export default class CategoryWrap extends Component {
+
   
   render() {
     return (

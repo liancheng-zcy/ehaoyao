@@ -16,7 +16,6 @@ import BScroll from 'better-scroll'
 export default class Ehome extends Component {
   componentDidMount(){
     new BScroll('.eHome', {
-      pullUpLoad: true,
       probeType: 2,
       preventDefault:false
     });

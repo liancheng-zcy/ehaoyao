@@ -3,20 +3,20 @@ import { get } from 'utils/http'
 import { connect } from 'react-redux'
 import { GETCATEGORYLIST } from '../action_types'
 
-const mapStateToProps = (state) => ({
-  selectList: state.home.categoryData
-})
+
 
 const mapDispatchToProps =  (dispatch) => ({
-  getSelectList(selId){
+  getSelectList(selId,list){
     dispatch({
       type:GETCATEGORYLIST,
-      selId:selId
+      selId:selId,
+      cateList:list,
+      url:'http://m.ehaoyao.com/api/mds/api/app/apiv2_4/thirdLevelCategorynew.json'
     })
   }
 })
 
-@connect(mapStateToProps,mapDispatchToProps)
+@connect(null,mapDispatchToProps)
 class Primary extends Component {
   constructor(){
     super()
@@ -26,8 +26,6 @@ class Primary extends Component {
     }
   }
   async componentDidMount(){
-   
-
     let result = await get({
       url:'http://m.ehaoyao.com/api/mds/api/app/apiv2_4/thirdLevelCategorynew.json',
       params:{
@@ -39,19 +37,19 @@ class Primary extends Component {
     this.setState({
       selectBar:result.data.data
     })
-    // console.log(this.state.selId)
-    // this.props.getSelectList()
+    this.props.getSelectList(this.state.selId,this.state.selectBar)
+    
   }
   onSelect = (cid) =>{
     return () =>{
       this.setState({
         selId:cid
+      },() =>{
+        this.props.getSelectList(this.state.selId,this.state.selectBar)
       })
     }
   }
   render() {
-    // console.log(this.state.selId)
-    this.props.getSelectList(this.state.selId)
     return (
       <div className="primary">
       <ul>

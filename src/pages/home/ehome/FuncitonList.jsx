@@ -16,16 +16,12 @@ const mapDispatchToProps =  (dispatch) => ({
   }
 })
 class FuncitonList extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      a:this.props.ImgList[0] ? this.props.ImgList[0].funcs:[]
-    }
-  }
+  
   componentDidMount(){
     this.props.getImgList() 
   }
   render() {
+    
     let imgData = this.props.ImgList[0] ? this.props.ImgList[0].funcs:[]
     return (
       <FuncitonListWrap>
