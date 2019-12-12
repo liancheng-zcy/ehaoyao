@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { SeckillListWrap } from './styledEhomeCom'
 import SeckillItem from './SeckillItem'
 import { get } from 'utils/http.js'
-export default class SeckillList extends Component {
+import inject_unount from 'utils/inject_unount.js'
+
+
+ @inject_unount
+ class SeckillList extends Component {
   constructor(){
     super()
     this.state ={
@@ -33,3 +37,5 @@ export default class SeckillList extends Component {
     )
   }
 }
+
+export default SeckillList

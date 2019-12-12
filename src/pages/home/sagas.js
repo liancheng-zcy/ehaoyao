@@ -18,16 +18,6 @@ function* loadData(action) {
 function * loadCategoryData(action) {
      
       try {
-         // const result = yield get({
-         //   url:action.url
-         // });
-         // let resData = result.data.data
-         // let data_category = null
-         // resData.forEach((val,index) => {
-         //    if(action.selId === val.cid){
-         //       data_category = result.data.data[index]
-         //    }
-         // })
          let resData = action.cateList
          let data_category = null
          resData.forEach((val,index) => {

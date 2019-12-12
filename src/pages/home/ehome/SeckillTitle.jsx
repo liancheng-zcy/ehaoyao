@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { get } from 'utils/http.js'
-export default class SeckillTitle extends Component {
+import inject_unount from 'utils/inject_unount.js'
+
+
+  @inject_unount
+  class SeckillTitle extends Component {
   state = {
     oDay: '00',
     oHour: '00',
@@ -65,3 +69,5 @@ export default class SeckillTitle extends Component {
     )
   }
 }
+
+export default SeckillTitle

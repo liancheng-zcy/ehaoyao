@@ -25,3 +25,26 @@ http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442
 
 3、详情页接口
   http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442388&memberId&pharmacyId=25&coonType=5&cityId=027
+
+4、解决内存泄漏的方法
+原因：当我们点击组件A后，组件A需要3秒的时间才能获取到数据并重新更新num的值，假如我们在这3秒内点击一次组件B，
+表示卸载组件A，但是组件A的数据请求依然还在，当请求成功后，组件A已经不存在，此时就会报这个警告(大概意思就是：你组件都没了，你还设置个啥)
+
+方法：
+```
+     function inject_unount (target){
+        // 改装componentWillUnmount，销毁的时候记录一下
+        let next = target.prototype.componentWillUnmount
+        target.prototype.componentWillUnmount = function () {
+            if (next) next.call(this, ...arguments);
+            this.unmount = true
+         }
+         // 对setState的改装，setState查看目前是否已经销毁
+        let setState = target.prototype.setState
+        target.prototype.setState = function () {
+            if ( this.unmount ) return ;
+            setState.call(this, ...arguments)
+        }
+    }
+
+```

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { get } from 'utils/http'
 import { connect } from 'react-redux'
 import { GETCATEGORYLIST } from '../action_types'
-
+import inject_unount from 'utils/inject_unount.js'
 
 
 const mapDispatchToProps =  (dispatch) => ({
@@ -15,8 +15,8 @@ const mapDispatchToProps =  (dispatch) => ({
     })
   }
 })
-
-@connect(null,mapDispatchToProps)
+@inject_unount
+// @connect(null,mapDispatchToProps)
 class Primary extends Component {
   constructor(){
     super()
@@ -71,4 +71,4 @@ class Primary extends Component {
   }
 }
 
-export default Primary
+export default connect(null,mapDispatchToProps)(Primary)

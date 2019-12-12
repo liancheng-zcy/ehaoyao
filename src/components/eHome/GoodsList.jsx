@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { get } from 'utils/http'
 import {GoodsListWrap} from './styledEhomeCom'
 import GoodsItem from './GoodsItem'
-export default class GoodsList extends Component {
+import inject_unount from 'utils/inject_unount.js'
+ @inject_unount 
+ class GoodsList extends Component {
   constructor(){
     super()
     this.state = {
@@ -40,3 +42,5 @@ export default class GoodsList extends Component {
     )
   }
 }
+
+export default GoodsList

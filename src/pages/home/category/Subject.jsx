@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { SubjectWrap } from './styledCategory'
 import { connect } from 'react-redux'
 import imgBg from 'assets/images/img-bg.png'
+
 const mapStateToProps = (state) => ({
   selectList: state.category.categoryData
 })
+
 @connect(mapStateToProps)
 class Subject extends Component {
   constructor(){

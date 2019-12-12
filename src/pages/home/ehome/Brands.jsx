@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { BrandsWrap } from './styledEhome'
 import { get } from 'utils/http'
-export default class Brands extends Component {
+import inject_unount from 'utils/inject_unount.js'
+ @inject_unount
+ class Brands extends Component {
   state = {
     data: [],
   }
@@ -39,3 +41,5 @@ export default class Brands extends Component {
     )
   }
 }
+
+export default Brands

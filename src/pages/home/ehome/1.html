@@ -1,1 +1,42 @@
-<div class="btn-return-top"></div>
+<header className="header">
+  <div className="goback"></div>
+  <div className="main">
+    <div className="main-title">
+      <ul className="menu-tab">
+        <li className="tab-item on">购物车<i>1</i></li>
+        <li className="tab-item">需求清单<i style="display: none;">0</i></li>
+      </ul>
+    </div>
+  </div>
+  <div className="right"><span className="operateBtn">编辑</span></div>
+</header>
+
+
+.menu-tab {
+  display: inline-flex;
+  width: 100%;
+  padding: 0 1.6rem;
+  justify-content: space-between;
+  .tab-item {
+    position: relative;
+    height: 1.173333rem;
+    font-size: .373333rem;
+    i {
+      position: absolute;
+      top: .16rem;
+      right: -.24rem;
+      width: .4rem;
+      height: .4rem;
+      line-height: .4rem;
+      border-radius: 50%;
+      background: #fff;
+      color: #ff344d;
+      font-size: .32rem;
+      font-style: normal;
+  }
+}
+.tab-item.on {
+    font-size: .426667rem;
+    border-bottom: 2px solid #fff;
+}
+}

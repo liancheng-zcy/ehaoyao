@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { SwiperWrap } from './styledEhome'
 import { Carousel } from 'antd-mobile';
 import { get } from 'utils/http'
-export default class Swiper extends Component {
+import inject_unount from 'utils/inject_unount.js'
+ @inject_unount 
+ class Swiper extends Component {
   state = {
     data: ['1','2','3'],
     imgHeight: 150,
@@ -51,3 +53,5 @@ export default class Swiper extends Component {
     )
   }
 }
+
+export default Swiper

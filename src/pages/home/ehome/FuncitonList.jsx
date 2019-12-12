@@ -3,6 +3,7 @@ import { Grid } from 'antd-mobile';
 import { FuncitonListWrap } from './styledEhome'
 import { connect } from 'react-redux'
 import { GETHOMELIST } from '../action_types'
+import inject_unount from 'utils/inject_unount.js'
 const mapStateToProps = (state) => ({
   ImgList: state.home.homeData
 })
@@ -15,6 +16,7 @@ const mapDispatchToProps =  (dispatch) => ({
     })
   }
 })
+@inject_unount
 class FuncitonList extends Component {
   
   componentDidMount(){
