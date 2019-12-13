@@ -14,4 +14,12 @@ module.exports = function(app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    '/post_api',
+    proxy({
+      target: 'http://m.ehaoyao.com',
+      changeOrigin: true,
+      pathRewrite: {"^/post_api" : ""},
+    })
+  );
 };

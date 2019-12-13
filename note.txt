@@ -48,3 +48,13 @@ http://m.ehaoyao.com/api/mds/api/app/apiv3_0/goodsBaseInfoMsite.json?groupId=442
     }
 
 ```
+5、react在线编辑器
+https://stackblitz.com/edit/react-sq5a68
+https://codesandbox.io/s/funny-taussig-mr8gr
+
+6、容器组件和UI组件
+  容器组件：只用于逻辑处理，有自己的状态和生命周期钩子
+  UI组件（presentation）：一般没有状态，只有来展示内容
+7、模块划分：按功能划分和按角色划分
+  功能划分：home和category功能放在一起
+  角色划分：比如：reducers放一起sagas放一起
