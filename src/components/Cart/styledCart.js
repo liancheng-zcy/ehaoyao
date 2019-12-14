@@ -248,6 +248,16 @@ export const RecommendListWrap = styled.div`
           }
         }
       }
+      .load-more {
+          display: flex;
+          padding-bottom: 2.5rem;
+          height: .8rem;
+          justify-content: center;
+          align-items: center;
+          color: #898989;
+          font-size: .373333rem;
+          margin-top:.3rem;
+      }
     }
   }
 `

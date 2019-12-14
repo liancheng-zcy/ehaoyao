@@ -5,10 +5,10 @@ export default class Needs extends Component {
     return (
       <NeedWrap>
         <div className="cover"></div>
-        <div className="no-result">
+        <div className="no-result" style={{display:"none"}}>
           <p className="no-result-tips">需求清单没有商品, 你还可以</p><a href="/" className="btn-contact-us nuxt-link-active">去逛逛</a>
         </div>
-        <div className="cart-list"  style={{display:"none"}}>
+        <div className="cart-list"  >
             <div className="hd">
               <div className="title">
                 <div className="left">

@@ -43,7 +43,6 @@ export default class Ehome extends Component {
             <Promotion></Promotion>
             <Goods></Goods>
             <Bottom></Bottom>
-
           </div>
         </div>
       </>

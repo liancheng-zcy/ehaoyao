@@ -29,10 +29,18 @@ function * loadCategoryData(action) {
       } catch (e) {
          yield put({type: types.FETCH_FAILED, message: e.message});
       }
+}
+   function * loadCartData(action) {
+      try { 
+         yield put({type:types.LOADCART, data:action.goodsVal});
+      } catch (e) {
+         yield put({type: types.FETCH_FAILED, message: e.message});
+      }
    }
 
 export {
   types,
   loadData as action,
-  loadCategoryData as action_category
+  loadCategoryData as action_category,
+  loadCartData as action_cart
 }

@@ -3,6 +3,7 @@ import Layout from 'pages/home/Layout'
 import './assets/styles/reset.css'
 import { Provider } from 'react-redux'
 import store from 'store/index.js'
+import Detail from 'pages/detail/Detail'
 import {
   Switch,
   Route,
@@ -17,7 +18,10 @@ export default class App extends Component {
              path = "/index" 
              component={Layout} 
           />
-          
+          <Route 
+             path = "/detail" 
+             component={Detail} 
+          />
           <Redirect
             exact
             from="/"

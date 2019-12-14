@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const CartWrap= styled.div`
   width:100%;
   height:100%;
-  overflow-y:scroll;
   .header {
     display: flex;
     width: 10rem;
@@ -73,6 +72,37 @@ export const CartWrap= styled.div`
       font-size: .373333rem;
       color: #fff;
   }
+}
+.cart-footer {
+    position: fixed;
+    bottom: 1.2rem;
+    width: 10rem;
+    height: 1.36rem;
+    background-color: #fff;
+    z-index: 2;
+   .footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: .373333rem;
+    width: 100%;
+    height: 1.306667rem;
+     .totalAmount {
+      flex: 1;
+      font-size: .32rem;
+      color: #333;
+  }
+   .btn-balance{
+      display: inline-flex;
+      width: 2.973333rem;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background-color: #ff344d;
+      font-size: .373333rem;
+      color: #fff;
+  }
+}
 }
 `
 
@@ -228,6 +258,7 @@ export const CartsWrap = styled.section`
         .mainInfo {
           padding-bottom: .133333rem;
           border-bottom: 1px solid #e5e5e5;
+          margin: 0 .373333rem 0;
         }
         .mainInfo:last-child {
             border-bottom: 0;

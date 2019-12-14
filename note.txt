@@ -58,3 +58,8 @@ https://codesandbox.io/s/funny-taussig-mr8gr
 7、模块划分：按功能划分和按角色划分
   功能划分：home和category功能放在一起
   角色划分：比如：reducers放一起sagas放一起
+8、git checkout -b 2019-12-11 7567dbb4f66b5
+
+9、axios 请求要携带cookie，需要在全局配置
+  import axios from 'axios'
+  axios.defaults.withCredentials=true

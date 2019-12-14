@@ -1,28 +1,88 @@
-<div id="loadmore-wrapper" class="scroll-loadmore-wrapper content down">
-  <div class="inner">
-      <ul class="list clearfix">
-        <li class="list-item">
-          <div class="img">
-             <img
-                src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_444314/8a8094216c1eeba9016cccb5bea8542a_zfx_big1.jpg"
-                alt="299元/盒)东阿阿胶 复方阿胶浆(无蔗糖) 20ml*48支 3盒装"
-              />
-          </div>
-          <p class="p-name">299元/盒)东阿阿胶 复方阿胶浆(无蔗糖) 20ml*48支 3盒装</p>
-          <p class="p-desc"></p>
-          <p class="p-spec">规格: 20ml*48支*3</p>
-          <ul class="promotions"></ul>
-          <div class="otherInfo">
-            <div class="price">
-              <span class="sell-price">
-                <i class="unit">￥</i>897.00
-              </span>
-              <span class="old-price">￥1098.00</span>
-            </div>
-            <span class="btn-cart">+</span>
-          </div>
-        </li>
-      </ul>
-    <footer class="load-more"><span>点击加载更多</span></footer>
+let cartList = await get({
+url:'http://m.ehaoyao.com/trade_api/shopcart/v1/shopcarts',
+params:{
+cartType: '0',
+loadType: '1',
+coonType: '5',
+cityId: '027',
+},
+Header:{
+Cookie:'zg_did=%7B%22did%22%3A%20%2216edaf5363fb7-0f0c34c92dbfcd-2d604637-3d10d-16edaf53640401%22%7D;
+userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m; userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m;
+NTKF_T2D_CLIENTID=guestA38D672F-BD40-1EA7-A7CD-DB9384D65EE4; _ga=GA1.2.50365380.1575641909;
+Hm_lvt_a267232d5dc2f512a7ada299ba505ccb=1575797573;
+historyWords=ddfd%2C%E6%9D%BF%E8%93%9D%E6%A0%B9%2C%E8%A1%A5%E6%B0%94%E5%85%BB%E8%A1%80%2C%E5%8F%8C12%2C%E4%BC%98%E7%AB%8B%E9%80%9A;
+Hm_lvt_742c7556ffddf8bc994236e8c5542cd9=1576156926,1576202184,1576287803,1576303796;
+Hm_lpvt_742c7556ffddf8bc994236e8c5542cd9=1576303796;
+Hm_lvt_f1df643efc5cd5c1a250ed84eedef663=1576156935,1576202188,1576287806,1576303799;
+Hm_lpvt_f1df643efc5cd5c1a250ed84eedef663=1576303799; sid=9924e58a-7f3a-474e-8872-c5a08f56c392;
+zg_823f347e281d47879c62f033ec3707cd=%7B%22sid%22%3A%201576303795489%2C%22updated%22%3A%201576303815045%2C%22info%22%3A%201576287803471%2C%22superProperty%22%3A%20%22%7B%5C%22%E7%AB%99%E7%82%B9%E6%9D%A5%E6%BA%90%5C%22%3A%20%5C%22M%E7%AB%99%5C%22%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22www.baidu.com%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%2C%22firstScreen%22%3A%201576303795489%2C%22landHref%22%3A%20%22http%3A%2F%2Fm.ehaoyao.com%2Fnews%2F20190910%2F91898.html%22%7D'
+}
+})
+let cartList_2 = await get({
+url:'http://m.ehaoyao.com/trade_api/shopcart/v1/shopcarts',
+params:{
+cartType: '1',
+loadType: '1',
+coonType: '5',
+cityId: '027',
+},
+Header:{
+Cookie:'zg_did=%7B%22did%22%3A%20%2216edaf5363fb7-0f0c34c92dbfcd-2d604637-3d10d-16edaf53640401%22%7D;
+userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m; userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m;
+NTKF_T2D_CLIENTID=guestA38D672F-BD40-1EA7-A7CD-DB9384D65EE4; _ga=GA1.2.50365380.1575641909;
+Hm_lvt_a267232d5dc2f512a7ada299ba505ccb=1575797573;
+historyWords=ddfd%2C%E6%9D%BF%E8%93%9D%E6%A0%B9%2C%E8%A1%A5%E6%B0%94%E5%85%BB%E8%A1%80%2C%E5%8F%8C12%2C%E4%BC%98%E7%AB%8B%E9%80%9A;
+Hm_lvt_742c7556ffddf8bc994236e8c5542cd9=1576156926,1576202184,1576287803,1576303796;
+Hm_lpvt_742c7556ffddf8bc994236e8c5542cd9=1576303796;
+Hm_lvt_f1df643efc5cd5c1a250ed84eedef663=1576156935,1576202188,1576287806,1576303799;
+sid=9924e58a-7f3a-474e-8872-c5a08f56c392; Hm_lpvt_f1df643efc5cd5c1a250ed84eedef663=1576306129;
+zg_823f347e281d47879c62f033ec3707cd=%7B%22sid%22%3A%201576303795489%2C%22updated%22%3A%201576306967719%2C%22info%22%3A%201576287803471%2C%22superProperty%22%3A%20%22%7B%5C%22%E7%AB%99%E7%82%B9%E6%9D%A5%E6%BA%90%5C%22%3A%20%5C%22M%E7%AB%99%5C%22%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22www.baidu.com%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%2C%22firstScreen%22%3A%201576303795489%2C%22landHref%22%3A%20%22http%3A%2F%2Fm.ehaoyao.com%2Fnews%2F20190910%2F91898.html%22%7D'
+}
+})
+console.log(cartList)
+console.log(cartList_2)
+
+
+return async () =>{
+let data_cart = await post({
+url: '/post_api/trade_api/shopcart/v1/shopcarts',
+data: {
+listPharmacy: [
+{
+pharmacyId: 25,
+listCart: [
+{
+itemQuantity: 1,
+itemId: 819328
+}
+]
+}
+],
+coonType: "5",
+cityId: "027"
+},
+Header:{
+Cookie:'zg_did=%7B%22did%22%3A%20%2216edaf5363fb7-0f0c34c92dbfcd-2d604637-3d10d-16edaf53640401%22%7D;
+userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m; userKey=zyUnJwnuSyUZUTsviDM8vKzEGilYG76m;
+NTKF_T2D_CLIENTID=guestA38D672F-BD40-1EA7-A7CD-DB9384D65EE4; _ga=GA1.2.50365380.1575641909;
+Hm_lvt_a267232d5dc2f512a7ada299ba505ccb=1575797573;
+historyWords=ddfd%2C%E6%9D%BF%E8%93%9D%E6%A0%B9%2C%E8%A1%A5%E6%B0%94%E5%85%BB%E8%A1%80%2C%E5%8F%8C12%2C%E4%BC%98%E7%AB%8B%E9%80%9A;
+Hm_lvt_742c7556ffddf8bc994236e8c5542cd9=1576156926,1576202184,1576287803,1576303796;
+Hm_lpvt_742c7556ffddf8bc994236e8c5542cd9=1576303796;
+Hm_lvt_f1df643efc5cd5c1a250ed84eedef663=1576156935,1576202188,1576287806,1576303799;
+Hm_lpvt_f1df643efc5cd5c1a250ed84eedef663=1576303799; sid=9924e58a-7f3a-474e-8872-c5a08f56c392;
+zg_823f347e281d47879c62f033ec3707cd=%7B%22sid%22%3A%201576303795489%2C%22updated%22%3A%201576303815045%2C%22info%22%3A%201576287803471%2C%22superProperty%22%3A%20%22%7B%5C%22%E7%AB%99%E7%82%B9%E6%9D%A5%E6%BA%90%5C%22%3A%20%5C%22M%E7%AB%99%5C%22%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22www.baidu.com%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%2C%22firstScreen%22%3A%201576303795489%2C%22landHref%22%3A%20%22http%3A%2F%2Fm.ehaoyao.com%2Fnews%2F20190910%2F91898.html%22%7D',
+}
+})
+console.log(data_cart)
+}
+
+<div className="cart-footer">
+  <div className="footer-wrapper">
+    <div className="totalAmount">
+      <div>合计:<span className="amount">￥3505.00</span></div>
+    </div>
+    <div className="btn-balance">结算(5)</div>
   </div>
 </div>

@@ -3,12 +3,13 @@
 import { takeEvery} from 'redux-saga/effects'
 import { sagas as home } from 'pages/home/'
 
-let { GETHOMELIST ,GETCATEGORYLIST } = home.types
+let { GETHOMELIST ,GETCATEGORYLIST,GETCARTLIST } = home.types
 
 
 function* sagas() {
   yield takeEvery(GETHOMELIST, home.action);
-  yield takeEvery(GETCATEGORYLIST,home.action_category)
+  yield takeEvery(GETCATEGORYLIST,home.action_category);
+  yield takeEvery(GETCARTLIST,home.action_cart)
 }
 
 

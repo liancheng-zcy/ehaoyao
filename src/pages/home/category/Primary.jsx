@@ -32,7 +32,6 @@ class Primary extends Component {
         coonType:'5',
         cityId:'027'
       }
-     
     })
     this.setState({
       selectBar:result.data.data
