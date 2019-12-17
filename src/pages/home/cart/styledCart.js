@@ -88,10 +88,10 @@ export const CartWrap= styled.div`
     width: 100%;
     height: 1.306667rem;
      .totalAmount {
-      flex: 1;
-      font-size: .32rem;
-      color: #333;
-  }
+        flex: 1;
+        font-size: .32rem;
+        color: #333;
+    }
    .btn-balance{
       display: inline-flex;
       width: 2.973333rem;
@@ -101,8 +101,36 @@ export const CartWrap= styled.div`
       background-color: #ff344d;
       font-size: .373333rem;
       color: #fff;
+    }
+
+    .icon-check-all {
+        width: 2rem;
+        font-size: .32rem;
+        color: #333;
+        .icon-check {
+            display: inline-block;
+            width: .453333rem;
+            height: .453333rem;
+            background: url("http://m.ehaoyao.com/_nuxt/img/icon-check.19e2229.png") no-repeat 50%/.426667rem;
+            vertical-align: middle;
+            margin-right: .133333rem;
+        }
+        .icon-check-on{
+          background: url("http://m.ehaoyao.com/_nuxt/img/icon-check-on.7d3b964.png") no-repeat 50%/.426667rem;
+      }
+    }
+    .btn-delete-all {
+      display: inline-flex;
+      width: 2.973333rem;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background-color: #ff344d;
+      font-size: .373333rem;
+      color: #fff;
   }
-}
+  }
+
 }
 `
 

@@ -30,7 +30,7 @@ import inject_unount from 'utils/inject_unount.js'
     this.setState({
       goodList:data
     })
-   
+   console.log(result)
   }
   render() {
     return (

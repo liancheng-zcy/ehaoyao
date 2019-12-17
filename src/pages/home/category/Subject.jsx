@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { SubjectWrap } from './styledCategory'
 import { connect } from 'react-redux'
 import imgBg from 'assets/images/img-bg.png'
-
+import {withRouter} from 'react-router-dom'
 const mapStateToProps = (state) => ({
   selectList: state.category.categoryData
 })
 
 @connect(mapStateToProps)
+@withRouter
 class Subject extends Component {
   constructor(){
     super()
@@ -35,6 +36,9 @@ class Subject extends Component {
   }
   handleScrollTop = () =>{
     this.refs.mySubject.scrollTop = 0
+  }
+  handleDetailList  () {
+   this.props.history.push('/index/list')
   }
   render() {
     let labelList = this.props.selectList.list ? this.props.selectList.list : []
@@ -78,6 +82,7 @@ class Subject extends Component {
                             <dd 
                               className="item-list"
                               key={value.cid + value.name}
+                              onTouchEnd ={this.handleDetailList.bind(this)}
                             >
                             <img 
                               // data-src={imgBg}

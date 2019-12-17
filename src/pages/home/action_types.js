@@ -8,4 +8,13 @@ export const GETCARTLIST = 'home/type_getCartList'
 export const LOADDATA = 'home/load_data'
 export const FETCH_FAILED = '/home/fetch_failed'
 export const LOADCATGORY = 'home/load_category'
+// 购物车
 export const LOADCART = 'home/load_cart'
+export const SELECT_ALL_SHOP = 'home/SELECT_ALL_SHOP';  // 购物车所有商品
+//export const GET_USER_CART = 'home/GET_USER_CART';  // 用户购物车数据
+export const TOGGLE_SHOP = 'home/TOGGLE_SHOP';  // 是否选中商品
+export const ADD_SHOP = 'home/ADD_SHOP';  // + 商品
+export const SUB_SHOP = 'home/SUB_SHOP';  // — 商品
+export const NUM_SHOP = 'home/NUM_SHOP'; 
+export const REMOVE_SHOP = 'home/REMOVE_SHOP';  // 删除商品 
+export const CANCEL_ALL_SHOP = 'home/CANCEL_ALL_SHOP'; 

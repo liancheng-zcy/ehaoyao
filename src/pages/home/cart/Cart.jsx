@@ -5,18 +5,40 @@ import Needs from './Needs'
 import Carts from './Carts'
 import Recommend from 'components/Cart/Recommend'
 import BScroll from 'better-scroll'
-import {connect} from 'react-redux'
-
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import {
+  SELECT_ALL_SHOP,
+  CANCEL_ALL_SHOP
+} from 'pages/home/action_types'
 const mapStateToProps = (state) => ({
-  cartList: state.cart.CartData
+  cartList: state.cart.CartData,
+  AllPrice: state.cart.AllPrice,
+  subSelect: state.cart.subSelect,
+  selectStatus:state.cart.selectStatus,
+})
+const mapDisPatchToProps = (dispatch) => ({
+  selectAll() {
+    dispatch({
+      type: SELECT_ALL_SHOP,
+    })
+  },
+  cancelAll(opt) {
+    dispatch({
+      type: CANCEL_ALL_SHOP,
+      opt
+    })
+  }
 })
 
-@connect(mapStateToProps) 
+@withRouter
+@connect(mapStateToProps, mapDisPatchToProps)
 class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      isCart: 'cart'
+      isCart: 'cart',
+      optStatus: true
     }
   }
   onIsCart = (opt) => {
@@ -26,31 +48,54 @@ class Cart extends Component {
       })
     }
   }
+  onGoBack = () => {
+    this.props.history.goBack()
+  }
+  optionBtn = () => {
+    this.state.optStatus = !this.state.optStatus
+    this.setState({
+      ...this.state
+    }, () => {
+      this.props.cancelAll(this.state.optStatus)
+    })
+  }
+  selectSta = () =>{
+    return () =>{
+     this.props.selectAll()
+    }
+  }
   componentDidMount() {
     // bScroll.refresh();
     new BScroll('.CartScroll', {
       probeType: 2,
-      preventDefault: false
+      preventDefault: false,
+      click: true
     });
   }
   render() {
+
     return (
       <CartWrap>
         <header className="header">
-          <div className="goback"></div>
+          <div className="goback" onTouchEnd={this.onGoBack}></div>
           <div className="main">
             <div className="main-title">
               <ul className="menu-tab">
                 <li className={`tab-item ${this.state.isCart === 'cart' ? 'on' : ''}`}
                   onTouchEnd={this.onIsCart('cart')}
-                >购物车<i>1</i></li>
+                >购物车<i>{this.props.subSelect}</i></li>
                 <li className={`tab-item ${this.state.isCart === 'need' ? 'on' : ''}`}
                   onTouchEnd={this.onIsCart('need')}
                 >需求清单<i style={{ display: 'none' }}>0</i></li>
               </ul>
             </div>
           </div>
-          <div className="right"><span className="operateBtn">编辑</span></div>
+          <div className="right">
+            <span
+              className="operateBtn"
+              onTouchEnd={this.optionBtn}
+            >{this.state.optStatus ? '编辑' : '完成'}</span>
+          </div>
         </header>
         <div className="CartScroll" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
           <div className="CartScrollContent">
@@ -61,16 +106,33 @@ class Cart extends Component {
               }
             </CartContentWrap>
             <Recommend></Recommend>
-           
+
           </div>
         </div>
         {
           this.props.cartList.length > 0 && (<div className="cart-footer">
             <div className="footer-wrapper">
-              <div className="totalAmount">
-                <div>合计:<span className="amount">￥3505.00</span></div>
-              </div>
-              <div className="btn-balance">结算(5)</div>
+              {
+                this.state.optStatus ? (
+                  <>
+                    <div className="totalAmount">
+                      <div>合计:<span className="amount">￥{this.props.AllPrice.toFixed(2)}</span></div>
+                    </div>
+                    <div className="btn-balance">结算({this.props.subSelect})</div>
+                  </>
+                )
+                  : (
+                    <>
+                      <div className="icon-check-all">
+                        <span 
+                          className={`icon-check ${this.props.selectStatus ? "icon-check-on" : ""}`}
+                          onTouchEnd={this.selectSta()}
+                        ></span>全选
+                    </div>
+                      <div className="btn-delete-all">删除</div>
+                    </>
+                  )
+              }
             </div>
           </div>)
         }

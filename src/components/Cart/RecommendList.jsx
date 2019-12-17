@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { RecommendListWrap } from './styledCart'
 import { post } from 'utils/http'
 import { connect } from 'react-redux'
-import { GETCARTLIST } from 'pages/home/action_types'
+import { 
+  GETCARTLIST,
+} from 'pages/home/action_types'
 import { Toast } from 'antd-mobile';
 const mapDispatchToProps =  (dispatch) => ({
   getCartList(goodsVal){
@@ -11,6 +13,7 @@ const mapDispatchToProps =  (dispatch) => ({
       goodsVal
     })
   }
+  
 })
  @connect(null,mapDispatchToProps)
  class RecommendList extends Component {
@@ -23,8 +26,8 @@ const mapDispatchToProps =  (dispatch) => ({
       
     }
   }
+ 
   async componentDidMount() {
-    
     let result = await post({
       url: '/post_api/front_api/recommend/order-cart',
       data: {
@@ -91,9 +94,10 @@ const mapDispatchToProps =  (dispatch) => ({
       cat_2_name: val.cat_2_name,
       cat_1_name: val.cat_1_name,
       allNum: 1,
+      isChecked:false,
     }
     this.props.getCartList(goods)
-    Toast.info('商品添加成功', 3);
+    Toast.info('商品添加成功', 1);
    }
   
   }

@@ -15,7 +15,7 @@ import inject_unount from 'utils/inject_unount.js'
   }
   async componentDidMount(){
     let result = await get({
-      url:"/api/mds/api/app/apiv3_0/getBuyingGoodsMSite.json?",
+      url:"/api/mds/api/app/apiv3_0/getBuyingGoodsMSite.json",
       params:{
         coonType:'5',
         cityId:'027'
@@ -25,7 +25,6 @@ import inject_unount from 'utils/inject_unount.js'
       SeckillList:result.data.data.homepageActivityList,
     })
   }
-
   render() {
     return (
     <SeckillListWrap id="seckill-container" className="content swiper-container swiper-container-horizontal swiper-container-ios">

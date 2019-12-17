@@ -17,7 +17,8 @@ import Category from './category/Category'
 import AskPharmacist from './AskPharmacist/AskPharmacist'
 // cart
 import Cart from './cart/Cart'
-
+// Products
+import Products from './categoryList/Products'
 import {
   withRouter,
 } from "react-router-dom";
@@ -36,6 +37,7 @@ class Layout extends React.Component {
     
   }
   static getDerivedStateFromProps(props, state) {
+    console.log(props)
     if(props.location.pathname === '/index/doc' || props.location.pathname === '/index/my'){
       return{
         selectedTab:props.location.pathname,
@@ -43,7 +45,6 @@ class Layout extends React.Component {
       }
     }else{
       return{
-        
         selectedTab:props.location.pathname,
         hidden:false
       }
@@ -51,7 +52,7 @@ class Layout extends React.Component {
   }
   render() {
     // console.log(this.props)
-    // console.log(this.state.selectedTab)
+    console.log(this.state.selectedTab)
     return (
         <TabBarWrap style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
           <TabBar
@@ -114,13 +115,19 @@ class Layout extends React.Component {
               onPress={() => {
                 this.setState({
                   selectedTab: '/index/category',
-                 
                 });
                 this.props.history.push('/index/category')
               }}
 
             >
-            <Category></Category>
+             {
+               this.state.selectedTab === '/index/category' && <Category></Category> 
+             }
+             {
+               this.state.selectedTab === '/index/list' && <Products></Products>
+             }
+             {/* <Category></Category>
+             <Products></Products> */}
             </TabBar.Item>
             <TabBar.Item
               style={{

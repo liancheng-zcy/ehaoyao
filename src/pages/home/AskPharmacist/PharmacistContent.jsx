@@ -7,7 +7,7 @@ export default class PharmacistContent extends Component {
   }
   async componentDidMount() {
     let result = await get({
-      url: 'http://m.ehaoyao.com/api/mds/api/app/apiv3_0/consultDoctor.json',
+      url: '/api/mds/api/app/apiv3_0/consultDoctor.json',
       params: {
         coonType: '5',
         cityId: '027'

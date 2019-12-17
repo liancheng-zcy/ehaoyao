@@ -17,7 +17,8 @@ export default class Ehome extends Component {
   componentDidMount(){
     new BScroll('.eHome', {
       probeType: 2,
-      preventDefault:false
+      preventDefault:false,
+      click: true
     });
   }
   render() {

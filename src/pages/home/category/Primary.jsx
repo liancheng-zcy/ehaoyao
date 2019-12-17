@@ -27,7 +27,7 @@ class Primary extends Component {
   }
   async componentDidMount(){
     let result = await get({
-      url:'http://m.ehaoyao.com/api/mds/api/app/apiv2_4/thirdLevelCategorynew.json',
+      url:'/api/mds/api/app/apiv2_4/thirdLevelCategorynew.json',
       params:{
         coonType:'5',
         cityId:'027'
