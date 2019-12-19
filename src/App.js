@@ -4,6 +4,7 @@ import './assets/styles/reset.css'
 import { Provider } from 'react-redux'
 import store from 'store/index.js'
 import Detail from 'pages/detail/Detail'
+import Products from 'pages/home/categoryList/Products'
 import {
   Switch,
   Route,
@@ -19,7 +20,12 @@ export default class App extends Component {
              component={Layout} 
           />
           <Route 
+             path="/products/:id" 
+             component={Products} 
+          />
+          <Route 
              path = "/detail" 
+             exact
              component={Detail} 
           />
           <Redirect

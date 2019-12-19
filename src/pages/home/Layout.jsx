@@ -18,7 +18,7 @@ import AskPharmacist from './AskPharmacist/AskPharmacist'
 // cart
 import Cart from './cart/Cart'
 // Products
-import Products from './categoryList/Products'
+// import Products from './categoryList/Products'
 import {
   withRouter,
 } from "react-router-dom";
@@ -37,7 +37,6 @@ class Layout extends React.Component {
     
   }
   static getDerivedStateFromProps(props, state) {
-    console.log(props)
     if(props.location.pathname === '/index/doc' || props.location.pathname === '/index/my'){
       return{
         selectedTab:props.location.pathname,
@@ -51,8 +50,7 @@ class Layout extends React.Component {
     }
   }
   render() {
-    // console.log(this.props)
-    console.log(this.state.selectedTab)
+    console.log(this.props.location)
     return (
         <TabBarWrap style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
           <TabBar
@@ -111,7 +109,7 @@ class Layout extends React.Component {
               }
               key="category"
 
-              selected={this.state.selectedTab === '/index/category'}
+              selected={this.props.location.pathname === '/index/category'}
               onPress={() => {
                 this.setState({
                   selectedTab: '/index/category',
@@ -121,13 +119,13 @@ class Layout extends React.Component {
 
             >
              {
-               this.state.selectedTab === '/index/category' && <Category></Category> 
+               this.props.location.pathname === '/index/category' && <Category></Category> 
              }
-             {
-               this.state.selectedTab === '/index/list' && <Products></Products>
-             }
-             {/* <Category></Category>
-             <Products></Products> */}
+             {/* {
+               this.props.location.pathname === '/list' && <Products></Products>
+             } */}
+             {/* <Products></Products>
+             <Category></Category> */}
             </TabBar.Item>
             <TabBar.Item
               style={{
@@ -206,6 +204,7 @@ class Layout extends React.Component {
             >
               <div>my</div>
             </TabBar.Item>
+           
           </TabBar>
         </TabBarWrap>
     );

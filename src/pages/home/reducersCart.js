@@ -91,7 +91,6 @@ export default (state = defaultState, action) => {
                   item.allNum = ''
                 }
               }
-              
             });
             state.CartData.forEach(currentItem => {
               if(currentItem.isChecked === true) {
@@ -102,8 +101,8 @@ export default (state = defaultState, action) => {
             return {
               ...state,
               AllPrice: Price,
-                subSelect: select,
-                CartData: [...state.CartData]
+              subSelect: select,
+              CartData: [...state.CartData]
             }
             case types.REMOVE_SHOP:
               state.CartData.map((item, index) => {
@@ -120,8 +119,8 @@ export default (state = defaultState, action) => {
               return {
                 ...state,
                 AllPrice: Price,
-                  subSelect: select,
-                  CartData: [...state.CartData]
+                subSelect: select,
+                CartData: [...state.CartData]
               }
               case types.TOGGLE_SHOP:
                 state.CartData.map(item => {
@@ -174,7 +173,6 @@ export default (state = defaultState, action) => {
                   CartData: action.message
                 }
               case types.CANCEL_ALL_SHOP: 
-                // console.log(action.opt)
                 if(!action.opt){
                   state.selectStatus = false
                 }
@@ -188,6 +186,26 @@ export default (state = defaultState, action) => {
                   AllPrice:0,
                   subSelect:0,
                   CartData: [...state.CartData]
+                }
+              case types.REMOVE_SELECT_SHOP: 
+                if(action.isCart === 'cart'){
+                  state.CartData.map((item,index) => {
+                    if(item.isChecked === true){
+                      state.CartData.splice(index,1)
+                    }
+                  });
+                  state.CartData.forEach(currentItem => {
+                    if (currentItem.isChecked === true) {
+                      Price += currentItem.price * currentItem.allNum
+                      select += currentItem.allNum * 1
+                    }
+                  });
+                  return {
+                    ...state,
+                    AllPrice: Price,
+                    subSelect: select,
+                    CartData: [...state.CartData]
+                  }
                 }
               default:
                 return state

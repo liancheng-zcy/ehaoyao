@@ -9,7 +9,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {
   SELECT_ALL_SHOP,
-  CANCEL_ALL_SHOP
+  CANCEL_ALL_SHOP,
+  REMOVE_SELECT_SHOP,
 } from 'pages/home/action_types'
 const mapStateToProps = (state) => ({
   cartList: state.cart.CartData,
@@ -27,6 +28,12 @@ const mapDisPatchToProps = (dispatch) => ({
     dispatch({
       type: CANCEL_ALL_SHOP,
       opt
+    })
+  },
+  selectDel(isCart) {//删除选中
+    dispatch({
+      type: REMOVE_SELECT_SHOP,
+      isCart
     })
   }
 })
@@ -52,9 +59,9 @@ class Cart extends Component {
     this.props.history.goBack()
   }
   optionBtn = () => {
-    this.state.optStatus = !this.state.optStatus
-    this.setState({
-      ...this.state
+    // this.state.optStatus = !this.state.optStatus
+    this.setState((state) =>{
+      state.optStatus = !state.optStatus
     }, () => {
       this.props.cancelAll(this.state.optStatus)
     })
@@ -62,6 +69,12 @@ class Cart extends Component {
   selectSta = () =>{
     return () =>{
      this.props.selectAll()
+    }
+  }
+  selectDele = () =>{
+    let isCart = this.state.isCart
+    return () =>{
+      this.props.selectDel(isCart)
     }
   }
   componentDidMount() {
@@ -129,7 +142,10 @@ class Cart extends Component {
                           onTouchEnd={this.selectSta()}
                         ></span>全选
                     </div>
-                      <div className="btn-delete-all">删除</div>
+                      <div 
+                        className="btn-delete-all"
+                        onTouchEnd={this.selectDele()}
+                      >删除</div>
                     </>
                   )
               }

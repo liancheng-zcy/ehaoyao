@@ -61,7 +61,6 @@ const mapDisPatchToProps = (dispatch) =>({
   }
   addShop = (id) =>{//商品加入
     return () =>{
-      // console.log(id)
       this.props.addShop(id)
     }
   }
@@ -98,8 +97,6 @@ const mapDisPatchToProps = (dispatch) =>({
     }
   }
   render() {
-    console.log(this.state.cartList)
-    console.log(this.props)
     return (
       <>
         <CartsWrap>

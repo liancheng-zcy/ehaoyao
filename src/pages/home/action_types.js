@@ -17,4 +17,8 @@ export const ADD_SHOP = 'home/ADD_SHOP';  // + 商品
 export const SUB_SHOP = 'home/SUB_SHOP';  // — 商品
 export const NUM_SHOP = 'home/NUM_SHOP'; 
 export const REMOVE_SHOP = 'home/REMOVE_SHOP';  // 删除商品 
-export const CANCEL_ALL_SHOP = 'home/CANCEL_ALL_SHOP'; 
+export const CANCEL_ALL_SHOP = 'home/CANCEL_ALL_SHOP'; //全不选
+export const REMOVE_SELECT_SHOP = 'home/REMOVE_SELECT_SHOP';  // 删除商品 
+
+// 列表
+export const TOGGLE_ROW = 'home/TOGGLE_ROW'; 

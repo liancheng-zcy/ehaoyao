@@ -37,11 +37,14 @@ class Subject extends Component {
   handleScrollTop = () =>{
     this.refs.mySubject.scrollTop = 0
   }
-  handleDetailList  () {
-   this.props.history.push('/index/list')
+  handleDetailList  (cid,value) {
+    this.props.history.push({
+      pathname:`/products/${cid}`,
+    })
   }
   render() {
     let labelList = this.props.selectList.list ? this.props.selectList.list : []
+    console.log(labelList)
     return (
       <>
         <SubjectWrap>
@@ -82,7 +85,7 @@ class Subject extends Component {
                             <dd 
                               className="item-list"
                               key={value.cid + value.name}
-                              onTouchEnd ={this.handleDetailList.bind(this)}
+                              onTouchEnd ={this.handleDetailList.bind(this,value.cid,value)}
                             >
                             <img 
                               // data-src={imgBg}

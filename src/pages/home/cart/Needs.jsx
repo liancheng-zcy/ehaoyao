@@ -24,6 +24,7 @@ export default class Needs extends Component {
             </div>
             <div className="content">
               <div className="cartList-item">
+                <div className="mainInfo">
                 <div className="item">
                   <div className="icon-check-box"><span className="icon-check icon-check-on"></span></div>
                   <div className="img">
@@ -50,6 +51,7 @@ export default class Needs extends Component {
                       <span className="btn-delete"></span>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
