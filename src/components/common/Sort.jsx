@@ -1,7 +1,11 @@
 import React ,{useState,useEffect} from 'react'
 import {SortWrap} from './common'
 import {connect} from 'react-redux'
-import { PRO_FILTER_TOGGLE ,PRO_TOTAL} from 'pages/home/action_types'
+import { 
+  PRO_FILTER_TOGGLE,
+  PRO_TOTAL,
+  PRO_DESC
+} from 'pages/home/action_types'
 const mapDispatchToProps = ((dispatch) =>({
   toggleFilter(isShow){
     dispatch({
@@ -13,6 +17,12 @@ const mapDispatchToProps = ((dispatch) =>({
     dispatch({
       type:PRO_TOTAL,
       isTotal
+    })
+  },
+  my_desc(isDesc){
+    dispatch({
+      type:PRO_DESC,
+      isDesc
     })
   }
 }))
@@ -60,6 +70,7 @@ function Sort(props){
   useEffect(() =>{
     props.toggleFilter(isFilter)
     props.my_Total(isTotal)
+    props.my_desc(desc)
   })
 
   return(
