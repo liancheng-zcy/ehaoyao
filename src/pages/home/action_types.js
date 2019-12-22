@@ -22,3 +22,7 @@ export const REMOVE_SELECT_SHOP = 'home/REMOVE_SELECT_SHOP';  // 删除商品
 
 // 列表
 export const TOGGLE_ROW = 'home/TOGGLE_ROW'; 
+export const PRO_TOTAL= 'home/PRO_TOTAL'; 
+export const PRO_DESC = 'home/PRO_DESC'; 
+export const PRO_FILTER_TOGGLE = 'home/PRO_FILTER_TOGGLE'; 
+export const PRO_SELF = 'home/PRO_SELF'; 

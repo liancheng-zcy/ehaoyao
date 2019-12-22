@@ -3,6 +3,94 @@ import styled from 'styled-components'
 export const ProductWrap =  styled.div`
   width:100%;
   height:100%;
+  position:relative;
+`
+export const FilterWrap = styled.section`
+  width:100%;
+  height:calc(100% - 2.133333rem);
+   /* height:100%; */
+   margin-top: 2.13333rem;
+  /* margin-bottom:2.133333rem; */
+  background:yellow;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:10;
+  background: rgba(0,0,0,.6);
+  overflow: auto;
+ .filter-wrapper {
+    position:relative;
+    width: 100%;
+    background-color: #fff;
+    .filter-content {
+      min-height: 2.666667rem;
+      max-height: 10.666667rem;
+      padding-bottom: .666667rem;
+      overflow-y: scroll;
+     .item-title {
+        padding-top: .373333rem;
+        padding-left: .253333rem;
+        font-size: .32rem;
+        color: #979797;
+    }
+    .pStatus-list {
+        padding-top: .226667rem;
+        padding-left: .253333rem;
+    }
+    .item {
+          float: left;
+          margin-right: .266667rem;
+          margin-bottom: .133333rem;
+          padding: 0 .133333rem;
+          width: 2.16rem;
+          height: .813333rem;
+          line-height: .813333rem;
+          text-align: center;
+          border-radius: .133333rem;
+          font-size: .32rem;
+          color: #979797;
+          border: 1px solid #dcdcdc;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          box-sizing: border-box;
+          overflow: hidden;
+      }
+    .clearfix, .clearfix:after, .clearfix:before {
+        content: "";
+        clear: both;
+        display: block;
+    }
+   .brand-list {
+      padding-top: .226667rem;
+      padding-left: .253333rem;
+    }
+  }
+   .filter-btn {
+      /* position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index:5; */
+      display: flex;
+      width: 100%;
+      height: 1.173333rem;
+      border-top: 1px solid #e5e5e5;
+      background-color: #fff;
+      .btn {
+        display: inline-flex;
+        width: 50%;
+        height: 1.173333rem;
+        line-height: 1.173333rem;
+        justify-content: center;
+        font-size: .4rem;
+        color: #ff344d;
+        cursor: pointer;
+    }
+     .btn.comfirm {
+        color: #fff;
+        background-color: #ff344d;
+    }
+  }
+}
 `
 
 export const ListWrap = styled.ul`
@@ -248,7 +336,5 @@ export const ListWrap = styled.ul`
 export const ProBetterWrap = styled.div`
   width:100%;
   height:100%;
-  height:calc(100%-2.13333rem);
-  margin-top:2.13333rem;
   overflow:hidden;
 `

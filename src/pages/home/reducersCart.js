@@ -39,7 +39,7 @@ export default (state = defaultState, action) => {
         }
       }
       case types.ADD_SHOP:
-        state.CartData.map(item => {
+        state.CartData.forEach(item => {
           if (item.goods_id === action.goods_id) {
             item.allNum++;
             if (item.allNum >= item.store) {
@@ -47,12 +47,7 @@ export default (state = defaultState, action) => {
             }
           }
         });
-        state.CartData.forEach(currentItem => {
-          if (currentItem.isChecked === true) {
-            Price += currentItem.price * currentItem.allNum
-            select += currentItem.allNum
-          }
-        });
+        summary(state.CartData)
         return {
           ...state,
           AllPrice: Price,
@@ -60,7 +55,7 @@ export default (state = defaultState, action) => {
             CartData: [...state.CartData]
         }
         case types.SUB_SHOP:
-          state.CartData.map(item => {
+          state.CartData.forEach(item => {
             if (item.goods_id === action.goods_id) {
               item.allNum--;
               if (item.allNum <= 1) {
@@ -68,20 +63,15 @@ export default (state = defaultState, action) => {
               }
             }
           });
-          state.CartData.forEach(currentItem => {
-            if (currentItem.isChecked === true) {
-              Price += currentItem.price * currentItem.allNum
-              select += currentItem.allNum
-            }
-          });
+          summary(state.CartData)
           return {
             ...state,
             AllPrice: Price,
-              subSelect: select,
-              CartData: [...state.CartData]
+            subSelect: select,
+            CartData: [...state.CartData]
           }
           case types.NUM_SHOP:
-            state.CartData.map(item => {
+            state.CartData.forEach(item => {
               if (item.goods_id === action.goods_id) {
                 item.allNum = action.num;
                 if (action.num >= item.store) {
@@ -92,12 +82,7 @@ export default (state = defaultState, action) => {
                 }
               }
             });
-            state.CartData.forEach(currentItem => {
-              if(currentItem.isChecked === true) {
-                Price += currentItem.price * currentItem.allNum
-                select += currentItem.allNum * 1
-              }
-            });
+            summary(state.CartData)
             return {
               ...state,
               AllPrice: Price,
@@ -105,17 +90,12 @@ export default (state = defaultState, action) => {
               CartData: [...state.CartData]
             }
             case types.REMOVE_SHOP:
-              state.CartData.map((item, index) => {
+              state.CartData.forEach((item, index) => {
                 if (item.goods_id === action.goods_id) {
                   state.CartData.splice(index, 1)
                 }
               });
-              state.CartData.forEach(currentItem => {
-                if (currentItem.isChecked === true) {
-                  Price += currentItem.price * currentItem.allNum
-                  select += currentItem.allNum
-                }
-              });
+              summary(state.CartData)
               return {
                 ...state,
                 AllPrice: Price,
@@ -123,7 +103,7 @@ export default (state = defaultState, action) => {
                 CartData: [...state.CartData]
               }
               case types.TOGGLE_SHOP:
-                state.CartData.map(item => {
+                state.CartData.forEach(item => {
                   if (item.goods_id === action.goods_id) {
                     item.isChecked = !item.isChecked;
                   }
@@ -136,33 +116,23 @@ export default (state = defaultState, action) => {
                 } else {
                   state.selectStatus = false
                 }
-                state.CartData.forEach(currentItem => {
-                  if (currentItem.isChecked === true) {
-                    Price += currentItem.price * currentItem.allNum
-                    select += currentItem.allNum * 1
-                  }
-                });
+                summary(state.CartData)
                 return {
                   ...state,
                   AllPrice: Price,
-                    subSelect: select,
-                    CartData: [...state.CartData]
+                  subSelect: select,
+                  CartData: [...state.CartData]
                 }
                 case types.SELECT_ALL_SHOP:
                   state.selectStatus = !state.selectStatus
-                  state.CartData.map(item => {
+                  state.CartData.forEach(item => {
                     if (state.selectStatus === true) {
                       item.isChecked = true
                     } else {
                       item.isChecked = false
                     }
                   });
-                  state.CartData.forEach(currentItem => {
-                    if (currentItem.isChecked === true) {
-                      Price += currentItem.price * currentItem.allNum
-                      select += currentItem.allNum * 1
-                    }
-                  });
+                  summary(state.CartData)
                   return {
                     ...state,
                     AllPrice: Price,
@@ -177,7 +147,7 @@ export default (state = defaultState, action) => {
                   state.selectStatus = false
                 }
                 if(state.selectStatus === false){
-                  state.CartData.map(item => {
+                  state.CartData.forEach(item => {
                     item.isChecked = false
                   })   
                 } 
@@ -189,17 +159,12 @@ export default (state = defaultState, action) => {
                 }
               case types.REMOVE_SELECT_SHOP: 
                 if(action.isCart === 'cart'){
-                  state.CartData.map((item,index) => {
+                  state.CartData.forEach((item,index) => {
                     if(item.isChecked === true){
                       state.CartData.splice(index,1)
                     }
                   });
-                  state.CartData.forEach(currentItem => {
-                    if (currentItem.isChecked === true) {
-                      Price += currentItem.price * currentItem.allNum
-                      select += currentItem.allNum * 1
-                    }
-                  });
+                  summary(state.CartData)
                   return {
                     ...state,
                     AllPrice: Price,
@@ -207,7 +172,18 @@ export default (state = defaultState, action) => {
                     CartData: [...state.CartData]
                   }
                 }
-              default:
-                return state
+              break;
+            default:
+              return state
     }
+    
+  function summary(cartData) { //总的计算
+    cartData.forEach(currentItem => {
+      if (currentItem.isChecked === true) {
+        Price += currentItem.price * currentItem.allNum
+        select += currentItem.allNum
+      }
+    });
+  }
 }
+

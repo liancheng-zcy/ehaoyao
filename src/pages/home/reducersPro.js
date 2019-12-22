@@ -1,6 +1,8 @@
 import * as types from './action_types'
 const initialState = {
-  isRow: true
+  isRow: true,
+  filter_show:false,
+  isTotal:true
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -9,6 +11,16 @@ export default (state = initialState, action) => {
       return { 
         ...state,
       };
+    case types.PRO_FILTER_TOGGLE: 
+      state.filter_show = action.isShow
+      return{
+        ...state
+      }
+    case types.PRO_TOTAL: 
+      state.isTotal = action.isTotal
+      return{
+        ...state
+      }
     default:
       return state
   }

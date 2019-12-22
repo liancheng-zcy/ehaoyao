@@ -120,15 +120,15 @@ export const ComHeaderWrap = styled.div`
 
 export const HeaderWrap = styled.header`
     display: flex;
-    width: 10rem;
+    width: 100%;
     height: 1.173333rem;
     background-color: #ff344d;
     align-items: center;
     font-family: \\5FAE\8F6F\96C5\9ED1;
-    position: fixed;
+    /* position: fixed;
     top:0;
     left:0;
-    z-index:3;
+    z-index:3; */
     .goback {
       margin-left: .133333rem;
       width: 1.066667rem;
@@ -199,10 +199,10 @@ export const SortWrap = styled.ul`
     justify-content: space-around;
     border-bottom: 1px solid #dadada;
     background-color: #fff;
-    position: fixed;
+    /* position: fixed;
     top:1.173333rem;
     left:0;
-    z-index:3;
+    z-index:3; */
     li {
       display: inline-flex;
       padding: 0 .266667rem;

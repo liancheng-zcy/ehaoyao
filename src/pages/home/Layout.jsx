@@ -17,8 +17,7 @@ import Category from './category/Category'
 import AskPharmacist from './AskPharmacist/AskPharmacist'
 // cart
 import Cart from './cart/Cart'
-// Products
-// import Products from './categoryList/Products'
+
 import {
   withRouter,
 } from "react-router-dom";
@@ -50,7 +49,6 @@ class Layout extends React.Component {
     }
   }
   render() {
-    console.log(this.props.location)
     return (
         <TabBarWrap style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
           <TabBar

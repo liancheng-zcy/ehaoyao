@@ -20,7 +20,7 @@ class GoodsItem extends Component {
                 key={item.id}
                 data-proid={item.linkId}
                 >
-                <a  onClick={this.handleDetail.bind(this,item)} href={`javascript:void(0)`} className="img">
+                <a href={`true`} onClick={this.handleDetail.bind(this,item)}  className="img">
                   <img src={`${item.imageUrl}`} alt="" />
                 </a>
                 <p className="p-name"><span>{item.name}</span></p>

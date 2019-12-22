@@ -44,7 +44,6 @@ class Subject extends Component {
   }
   render() {
     let labelList = this.props.selectList.list ? this.props.selectList.list : []
-    console.log(labelList)
     return (
       <>
         <SubjectWrap>
