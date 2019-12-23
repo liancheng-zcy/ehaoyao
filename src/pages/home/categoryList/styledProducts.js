@@ -55,6 +55,10 @@ export const FilterWrap = styled.section`
           box-sizing: border-box;
           overflow: hidden;
       }
+    .item.on {
+        color: #ff344d;
+        border-color: #ff344d;
+    }
     .clearfix, .clearfix:after, .clearfix:before {
         content: "";
         clear: both;
@@ -337,4 +341,76 @@ export const ProBetterWrap = styled.div`
   width:100%;
   height:100%;
   overflow:hidden;
+`
+
+export const SearchWrap = styled.div`
+  .hotSearch {
+      padding: 0 .346667rem;
+      width: 100%;
+      height: auto;
+      background-color: #fff;
+      .title {
+        height: 1.146667rem;
+        line-height: 1.146667rem;
+        font-size: .4rem;
+        color: #181818;
+    }
+    .item {
+        display: inline-block;
+        margin: 0 .346667rem .266667rem 0;
+        padding: 0 .373333rem;
+        height: 1.013333rem;
+        line-height: 1.013333rem;
+        background-color: #f0f2f5;
+        font-size: .4rem;
+        color: #4e4e4e;
+        border-radius: .106667rem;
+    }
+  }
+  .searchHistory {
+      padding-bottom: 1.2rem;
+      width: 100%;
+      height: auto;
+      background-color: #fff;
+      .title {
+        padding: 0 .346667rem;
+        height: 1.146667rem;
+        line-height: 1.146667rem;
+        font-size: .4rem;
+        color: #181818;
+        border-bottom: 1px solid #e5e5e5;
+        span {
+          float: right;
+          font-size: .28rem;
+          color: #898989;
+          cursor: pointer;
+      }
+    }
+    .item {
+        display: block;
+        margin-left: .346667rem;
+        padding-right: .266667rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: .4rem;
+        color: #4e4e4e;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+  }
+
+`
+export const SearchListWrap = styled.ul`
+    padding-left: .32rem;
+    width: 100%;
+    background-color: #fff;
+    .item {
+      height: 1.266667rem;
+      line-height: 1.266667rem;
+      font-size: .4rem;
+      color: #4e4e4e;
+      border-bottom: 1px solid #dadada;
+  }
 `

@@ -1,5 +1,6 @@
 import React,{ useState,useEffect,useRef }from 'react'
 import Header from 'components/common/Header'
+import SearchContent from './SearchContent'
 import Sort from 'components/common/Sort'
 import ProductList from './ProductList'
 import {ProductWrap,ProBetterWrap} from './styledProducts'
@@ -14,13 +15,15 @@ import {
 
 const mapStateToProps =  (state) => ({
   filter_show:state.product.filter_show,
-  getInfo:state.product.getInfo
+  getInfo:state.product.getInfo,
+  isPro:state.product.isPro
 })
 
 function Products(props){
-  console.log(props.getInfo)
+  // console.log(props.getInfo)
   const [proList, setproList] = useState([])
   const [proFilter, setProFilter] = useState([])
+  // const [getInfo] = useState(props.getInfo)
   let ScrollRef = useRef()
     useEffect( () =>{
     // let cid = props.match.params.id 
@@ -32,7 +35,6 @@ function Products(props){
         params:props.getInfo
       })
       setproList(result.data.data.goodsList)
-      // console.log(result.data.data.brandList)
       setProFilter(result.data.data.brandList)
     }
     fetchData()
@@ -58,8 +60,7 @@ function Products(props){
       }
       ScrollRef.current.finishPullUp();
     })
-  },[])
-
+  },[props.getInfo])
   useEffect(() =>{
     ScrollRef.current.refresh()
   },[proList])
@@ -67,12 +68,21 @@ function Products(props){
       <>
       <ProductWrap>
           <Header></Header>
-          <Sort></Sort>
-          <ProBetterWrap className="product_content_wrap" >
-              <div className="product_content">
-                <ProductList  proList = {proList}></ProductList>
-              </div>
-          </ProBetterWrap>
+          {
+            props.isPro ? (
+              <>
+                <Sort></Sort>
+                <ProBetterWrap className="product_content_wrap" >
+                    <div className="product_content">
+                      <ProductList  proList = {proList}></ProductList>
+                    </div>
+                </ProBetterWrap>
+              </>
+            )
+            :(
+              <SearchContent></SearchContent>
+            )
+          }
           {
             props.filter_show && <Filter proFilter={proFilter}></Filter>
           }

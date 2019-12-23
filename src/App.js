@@ -24,6 +24,10 @@ export default class App extends Component {
              component={Products} 
           />
           <Route 
+             path="/search" 
+             component={Products} 
+          />
+          <Route 
              path = "/detail" 
              exact
              component={Detail} 

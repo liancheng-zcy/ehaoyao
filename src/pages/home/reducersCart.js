@@ -159,11 +159,7 @@ export default (state = defaultState, action) => {
                 }
               case types.REMOVE_SELECT_SHOP: 
                 if(action.isCart === 'cart'){
-                  state.CartData.forEach((item,index) => {
-                    if(item.isChecked === true){
-                      state.CartData.splice(index,1)
-                    }
-                  });
+                  state.CartData = state.CartData.filter((item) => item.isChecked === false)
                   summary(state.CartData)
                   return {
                     ...state,
