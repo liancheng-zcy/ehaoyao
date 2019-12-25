@@ -1,23 +1,23 @@
 import React from 'react'
 import {ListWrap} from './styledProducts'
 import {connect} from 'react-redux'
-
+import SearchFail from './Search404'
 
 const mapStateToProps = (state) =>({
   isRow:state.product.isRow,
 })
 
 function ProductList(props) {
-  
   return (
     <>
       <ListWrap className="ul-list">
         {
-         props.proList.map((val,index) =>{
+        props.proList.length > 0 ?( props.proList.map((val,index) =>{
             return(
               <li 
                 className={`${ props.isRow ? 'product-item-list' : 'product-item-row'}`}
                 key={val.groupId + index + val.goodsName}
+                
               >
             <div className="img">
               <div className="icon-label-box"><i className="icon-label-rx"></i></div>
@@ -43,6 +43,10 @@ function ProductList(props) {
           </li>
             )
           })
+          ):
+          (
+            <SearchFail></SearchFail>
+          )
         }
       </ListWrap>
     </>

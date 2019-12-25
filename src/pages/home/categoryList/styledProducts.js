@@ -414,3 +414,36 @@ export const SearchListWrap = styled.ul`
       border-bottom: 1px solid #dadada;
   }
 `
+
+export const SearchFailWrap = styled.div`
+    margin: .8rem auto 0;
+    padding-top: 4.4rem;
+    padding-bottom: 2.666667rem;
+    width: 8.133333rem;
+    background: url("http://m.ehaoyao.com/_nuxt/img/bg-nogoods.7b52968.png") no-repeat top/8.026667rem 4.186667rem;
+    .no-result-tips {
+      margin-bottom: .266667rem;
+      line-height: .506667rem;
+      font-size: .4rem;
+      color: #898989;
+      word-break: break-all;
+  }
+  .tips-list {
+      font-size: .32rem;
+      color: #a5a5a5;
+  }
+  .btn-contact-us {
+      display: block;
+      margin: .533333rem auto 0;
+      width: 5.866667rem;
+      height: .933333rem;
+      line-height: .933333rem;
+      text-align: center;
+      border: 1px solid #ff344d;
+      border-radius: .133333rem;
+      color: #ff344d;
+      font-size: .373333rem;
+      background-color: #fff;
+      text-decoration: none;
+  }
+`

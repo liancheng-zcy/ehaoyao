@@ -1,94 +1,135 @@
-import React from 'react'
-import {HeaderWrap} from './common'
-import {connect} from 'react-redux'
-import { TOGGLE_ROW,SEARCH_ONFOCUS,SEARCH_CONTENT,SEARCH_LIST} from 'pages/home/action_types'
-import {withRouter} from 'react-router-dom'
+import React, { useState, useRef } from 'react'
+import { HeaderWrap } from './common'
+import { connect } from 'react-redux'
+import searchHistory from 'utils/searchHistory'
+import {
+  TOGGLE_ROW,
+  SEARCH_ONFOCUS,
+  SEARCH_CONTENT,
+  SEARCH_LIST,
+  SEARCH_CLICK
+} from 'pages/home/action_types'
+import { withRouter } from 'react-router-dom'
 import _ from 'lodash'
 import { get } from 'utils/http'
-const mapDispatchToProps =  (dispatch) => ({
-  myToggleRow(){
+const mapDispatchToProps = (dispatch) => ({
+  myToggleRow() {
     dispatch({
-      type:TOGGLE_ROW
+      type: TOGGLE_ROW
     })
   },
-  mySearch(){
+  mySearch(isPro) {
     dispatch({
-      type:SEARCH_ONFOCUS
+      type: SEARCH_ONFOCUS,
+      isPro
     })
   },
-  mySearchContent(SearchContent,searchList){
+  mySearchContent(SearchContent, searchList) {
     dispatch({
-      type:SEARCH_CONTENT,
+      type: SEARCH_CONTENT,
       SearchContent,
       searchList
     })
   },
-  mySearchList(searchList){
+  mySearchList(searchList) {
     dispatch({
-      type:SEARCH_LIST,
+      type: SEARCH_LIST,
       searchList
+    })
+  },
+  mySearchClick(keyVal) {
+    dispatch({
+      type: SEARCH_CLICK,
+      keyVal
     })
   }
 })
-const mapStateToProps = (state) =>({
-  isRow:state.product.isRow
+const mapStateToProps = (state) => ({
+  isRow: state.product.isRow
 })
 
 
 function Header(props) {
-  function toggleRow(){
+  let inputRef = useRef()
+  const [keyVal, setKeyVal] = useState('')
+  function toggleRow() {
     props.myToggleRow()
   }
-  function inputOnFocus(){
+  function inputOnFocus() {
     props.history.push('/search')
-    props.mySearch()
+    props.mySearch(false)
   }
-  function inputOnBlur(){
+  function inputOnBlur() {
     console.log(2)
   }
- async function inputOnchange(e){
-    let value = e.target.value
+  async function inputOnchange() {
+    let value = inputRef.current.value
+    setKeyVal(inputRef.current.value)
     let result = await get({
-      url:'/api/bigdata/search.json',
-      params:{
-        name:value,
-        coonType:'5',
-        cityId:'027',
+      url: '/api/bigdata/search.json',
+      params: {
+        name: value,
+        coonType: '5',
+        cityId: '027',
       }
     })
-    if(value === ''){
+    if (value === '') {
       props.mySearchContent(true)
-    }else{
+    } else {
       props.mySearchContent(false)
-      if(result.data.status === '0'){
+      if (result.data.status === '0') {
         props.mySearchList(result.data.data)
-      }else{
+      } else {
         props.mySearchList(["关键词没有命中结果"])
       }
     }
   }
-  _.debounce(inputOnchange,500)
-  return (
-      <HeaderWrap className="header productList">
-        <div className="goback"></div><div className="main">
-          <div className="search-wrapper">
-            <input 
-              type="text" 
-              placeholder="泰尔丝 补肺丸 鸿茅药酒" 
-              className="searchText"    
-              onFocus={inputOnFocus }
-              onBlur={inputOnBlur}
-              onChange={(e) =>inputOnchange(e)}
-            />
-          </div>
-          </div><div className="right">
-            <span 
-            className={`icon-layout ${props.isRow ? '' : 'row'}`}
-            onTouchEnd={toggleRow}
-            ></span>
-          </div>
-      </HeaderWrap>
-      )
+  function handleSearch() {
+    let val = keyVal
+    if (inputRef.current.value === '') {
+      val = inputRef.current.placeholder
     }
-    
-export default withRouter(connect(mapStateToProps ,mapDispatchToProps)(Header))
+    props.mySearch(true)
+    props.mySearchClick(val)
+    props.history.push(`/products/${decodeURIComponent(val)}`)
+    searchHistory(val)
+  }
+  function onGoBack(){
+    props.history.goBack()
+  }
+  return (
+    <HeaderWrap className="header productList">
+      <div className="goback"
+        onTouchEnd={onGoBack}
+      ></div><div className="main">
+        <div className="search-wrapper">
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="泰尔丝 补肺丸 鸿茅药酒"
+            className="searchText"
+            onFocus={inputOnFocus}
+            onBlur={inputOnBlur}
+            onChange={_.debounce(inputOnchange, 500)}
+          />
+        </div>
+      </div><div className="right">
+        {
+          props.match.path === '/products/:id' ? (
+            <span
+              className={`icon-layout ${props.isRow ? '' : 'row'}`}
+              onTouchEnd={toggleRow}
+            ></span>
+          ) :
+            (
+              <span
+                onTouchEnd={handleSearch}
+              >搜索</span>
+            )
+        }
+      </div>
+    </HeaderWrap>
+  )
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))

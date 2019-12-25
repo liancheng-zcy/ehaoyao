@@ -3,11 +3,10 @@ import {GoodsItemWrap} from './styledEhomeCom'
 import {withRouter} from 'react-router-dom'
 @withRouter
 class GoodsItem extends Component {
-  handleDetail(item){
-    //  this.props.history.push('/detail')
-    console.log(item)
-
-  }
+  // onTouchEnd={this.handleDetail.bind(this,item.linkId)} 
+  // handleDetail(linkId){
+  //    this.props.history.push(`/detail/${linkId}`)
+  // }
   render() {
     let goodList = this.props.goodList
     return (
@@ -20,7 +19,7 @@ class GoodsItem extends Component {
                 key={item.id}
                 data-proid={item.linkId}
                 >
-                <a href={`true`} onClick={this.handleDetail.bind(this,item)}  className="img">
+                <a href={`/detail/${item.linkId}`}  className="img">
                   <img src={`${item.imageUrl}`} alt="" />
                 </a>
                 <p className="p-name"><span>{item.name}</span></p>

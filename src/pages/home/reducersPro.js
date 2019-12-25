@@ -5,10 +5,10 @@ const initialState = {
   getInfo:{
     isStore: 0,
     type: 1,
-    cid: 845,
+    cid: '',
     page: 1,
     rows: 10,
-    descs: 'asc',
+    descs: '',
     plngLat: '114.19683,30.54626',
     wordType: 'cats_id',
     coonType: '5',
@@ -74,7 +74,7 @@ export default (state = initialState, action) => {
       }
     // search
     case types.SEARCH_ONFOCUS: 
-      state.isPro = false
+      state.isPro = action.isPro
       return{
         ...state
       }
@@ -88,6 +88,19 @@ export default (state = initialState, action) => {
       return{
         ...state,
         searchList:[...state.searchList]
+      }
+    case types.SEARCH_CLICK: 
+      delete state.getInfo.wordType
+      state.getInfo.searchGoodsBrief = action.keyVal
+      state.getInfo.cid = ''
+      state.getInfo.brandId = ''
+      state.getInfo.descs = ''
+      state.getInfo.isStore = 0
+      state.getInfo.isStore = 1
+      state.getInfo.isSelf = ''
+      return{
+        ...state,
+        getInfo:{...state.getInfo}
       }
     default:
       return state

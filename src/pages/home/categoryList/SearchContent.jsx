@@ -2,14 +2,35 @@ import React, { useState, useEffect } from 'react'
 import { SearchWrap,SearchListWrap} from './styledProducts'
 import { get } from 'utils/http'
 import { connect } from 'react-redux'
+import store from '../../../../node_modules/store/dist/store.legacy'
+import {withRouter} from 'react-router-dom'
+import searchHistory from 'utils/searchHistory'
+import {
+  SEARCH_ONFOCUS,
+  SEARCH_CLICK
+} from 'pages/home/action_types'
 const mapStateToProps = (state) => ({
   SearchContent: state.product.isContent,
   searchList:state.product.searchList
 })
-
+const mapDispatchToProps = (dispatch) => ({
+  mySearch(isPro) {
+    dispatch({
+      type: SEARCH_ONFOCUS,
+      isPro
+    })
+  },
+  mySearchClick(keyVal) {
+    dispatch({
+      type: SEARCH_CLICK,
+      keyVal
+    })
+  }
+})
 function SearchContent(props) {
   const [hotList, setHotList] = useState([])
   let searchList = props.searchList
+  let historyList = store.get('historyKey')
   useEffect(() => {
     let result
     async function getHot() {
@@ -24,10 +45,22 @@ function SearchContent(props) {
     }
     getHot()
   }, [])
-  let onSearchKey = (val) =>{
+  // let onSearchKey = (val) =>{
+  //   return () =>{
+  //     console.log(val)
+  //   }
+  // }
+  let handleSearch = (val) =>{
     return () =>{
-      console.log(val)
+      props.mySearch(true)
+      props.mySearchClick(val)
+      props.history.push(`/products/${decodeURIComponent(val)}`)
+      searchHistory(val)
     }
+  }
+  function clearHistory(){
+    store.set('historyKey', {data:[]})
+    window.location.replace('/search')
   }
   return (
     <>
@@ -42,15 +75,26 @@ function SearchContent(props) {
                     <dd
                       className="item"
                       key={val.keysId}
+                      onTouchEnd={handleSearch(val.keysValue)}
                     >{val.keysValue}</dd>
                   )
                 })
               }
             </dl>
             <dl className="searchHistory">
-              <dt className="title">历史搜索 <span>清除历史记录</span></dt>
-              <dd className="item">利福布汀胶囊</dd>
-              <dd className="item">板蓝根</dd>
+              <dt className="title">历史搜索 <span 
+                onTouchEnd={clearHistory}
+              >清除历史记录</span></dt>
+              {
+                historyList && historyList.data.map((value) =>{
+                  return(
+                    <dd 
+                      key={value} className="item"
+                      onTouchEnd={handleSearch(value)}
+                    >{value}</dd>
+                  )
+                })
+              }
             </dl>
           </SearchWrap>
         )
@@ -62,13 +106,11 @@ function SearchContent(props) {
                   <li 
                     key={val+index}
                     className="item"
-                    onTouchEnd={onSearchKey(val)}
-                >{val}</li>
+                    onTouchEnd={handleSearch(val)}
+                  >{val}</li>
                 )
               })
             }
-            
-            
         </SearchListWrap>
         )
      }
@@ -76,4 +118,4 @@ function SearchContent(props) {
   )
 }
 
-export default connect(mapStateToProps)(SearchContent)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(SearchContent))

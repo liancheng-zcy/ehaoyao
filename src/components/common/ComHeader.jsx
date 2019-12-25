@@ -13,6 +13,7 @@ class ComHeader extends Component {
   state = {
     visible: false,
     selected: '',
+    isChecked:true
   };
   onSelect = (opt) => {
     this.setState({
@@ -30,7 +31,7 @@ class ComHeader extends Component {
         this.props.history.push('/index/my')
         break;
       case '7':
-        alert('search')
+        this.props.history.push('/search')
         break;
       default:
         break;
@@ -44,13 +45,46 @@ class ComHeader extends Component {
   onGoBack = () => {
     this.props.history.goBack()
   }
+  handleSearch = () =>{
+    this.props.history.push('/search')
+  }
+  handleCheck = () =>{
+    this.setState((state) =>{
+      state.isChecked = !state.isChecked
+      return{
+        ...state
+      }
+    })
+  }
   render() {
 
     return (
       <ComHeaderWrap>
         <header className="header">
           <div className="goback" onTouchEnd={this.onGoBack}></div>
-          <div className="main"><span className="main-title">问药师</span></div>
+          {
+            this.props.flag === "ask" && <div className="main"><span className="main-title">问药师</span></div>
+          }
+          {
+            this.props.flag === "detail" && (
+              <div className="dMain">
+                <div className="nav">
+                  <ul className="menu-list">
+                    <li 
+                      className={`item ${this.state.isChecked ? "active" : ""}`}
+                      onTouchEnd={this.handleCheck}
+                    >商品</li>
+                    <li 
+                      className={`item ${this.state.isChecked ? "" : "active"}`}
+                      onTouchEnd={this.handleCheck}
+                    >详情</li></ul>
+                    <span className="btn-search"
+                      onTouchEnd = {this.handleSearch}
+                    ></span>
+                  </div>
+              </div>
+            )
+          }
           <div className="right">
             <Popover
               mask

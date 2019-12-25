@@ -96,6 +96,44 @@ export const ComHeaderWrap = styled.div`
         display: inline-block;
     }
   }
+  .dMain{
+    display: flex;
+    margin: 0 auto;
+    flex: 1;
+    width: 5.6rem;
+    height: 1.173333rem;
+    line-height: 1.173333rem;
+    align-items: center;
+     .nav {
+        display: flex;
+        padding-left: 1.333333rem;
+        width: 100%;
+        .menu-list {
+          display: inline-flex;
+          flex: 1;
+          justify-content: space-around;
+          .item {
+            display: inline-block;
+            padding: 0 .133333rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
+            font-size: .426667rem;
+            font-family: \\5FAE\8F6F\96C5\9ED1;
+            color: #fff;
+            border-bottom: .08rem solid #ff344d;
+            white-space: nowrap;
+        }
+        .item.active {
+            border-bottom: .08rem solid #ffc9d3;
+        }
+      }
+    .btn-search {
+        display: inline-flex;
+        width: .933333rem;
+        background: url("http://m.ehaoyao.com/_nuxt/img/bg_menu_search.4f2b3d2.png") no-repeat 100%/.48rem;
+    }
+    }
+  }
   .right {
       position: relative;
       width: 1.6rem;

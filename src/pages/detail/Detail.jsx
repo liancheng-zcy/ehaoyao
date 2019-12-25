@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-
-export default class Detail extends Component {
-  render() {
-    return (
+import React from 'react'
+import ComHeader from 'components/common/ComHeader'
+function Detail(){
+  return(
+    <>
+      <ComHeader flag="detail"></ComHeader>
       <div>
-        detail
+        这里是详情页数据渲染
       </div>
-    )
-  }
+    </>
+  )
 }
+export default Detail

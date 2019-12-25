@@ -5,7 +5,7 @@ export default class AskPharmacist extends Component {
   render() {
     return (
       <div>
-        <ComHeader></ComHeader>
+        <ComHeader flag="ask"></ComHeader>
         <PharmacistContent></PharmacistContent>
       </div>
     )

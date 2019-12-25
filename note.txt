@@ -63,6 +63,7 @@ https://codesandbox.io/s/funny-taussig-mr8gr
 9、axios 请求要携带cookie，需要在全局配置
   import axios from 'axios'
   axios.defaults.withCredentials=true
+  解决跨域问题：需要webpack配置domain
 10、obj（判断对象中是否包含某个key属性）
   !("key" in obj)    //不包含
   obj.hasOwnProperty("key")   //包含
