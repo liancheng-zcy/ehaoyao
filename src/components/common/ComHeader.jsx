@@ -65,6 +65,9 @@ class ComHeader extends Component {
           {
             this.props.flag === "ask" && <div className="main"><span className="main-title">问药师</span></div>
           }
+           {
+            this.props.flag === "my" && <div className="main"><span className="main-title">我的功能</span></div>
+          }
           {
             this.props.flag === "detail" && (
               <div className="dMain">

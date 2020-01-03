@@ -14,4 +14,6 @@ const path = require('path')
         store: path.resolve(__dirname, './src/store')
       }),
       addDecoratorsLegacy()    
+
+      
   );

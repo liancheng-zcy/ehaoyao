@@ -17,7 +17,8 @@ import Category from './category/Category'
 import AskPharmacist from './AskPharmacist/AskPharmacist'
 // cart
 import Cart from './cart/Cart'
-
+// my
+import My from './my/My'
 import {
   withRouter,
 } from "react-router-dom";
@@ -200,7 +201,7 @@ class Layout extends React.Component {
                 this.props.history.push('/index/my')
               }}
             >
-              <div>my</div>
+              <My></My>
             </TabBar.Item>
            
           </TabBar>
